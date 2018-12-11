@@ -2,7 +2,7 @@ import React from 'react';
 
 const dropDown = (props) => {
   const items = props.items.map(item => (
-    <li><a href='#'>{item}</a></li>
+    <li><a onClick={() => props.clicked(item)}>{item}</a></li>
   ));
   
   return(
