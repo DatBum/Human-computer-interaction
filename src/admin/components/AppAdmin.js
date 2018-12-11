@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import NavBar from '../containers/NavBar';
 import SideBar from '../containers/SideBar';
+import Main from '../containers/Main'
 import '../css/admin.css';
 
-class App extends Component {
+class AppAdmin extends Component {
+
+  constructor(props){
+    super(props);
+  }
+
   render() {
     return (
       <div>
@@ -11,6 +17,7 @@ class App extends Component {
         <div className="container-fluid">
           <div className="row">
             <SideBar />
+            <Main />
           </div>
         </div>
       </div>
@@ -18,4 +25,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default AppAdmin;

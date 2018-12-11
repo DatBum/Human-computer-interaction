@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Fragment} from 'react';
 import HomePage from './pages/HomePage/HomePage';
 import CartPage from './pages/CartPage/CartPage';
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
@@ -7,12 +7,22 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import ProductPage from './pages/ProductPage/ProductPage';
 import ProductListPage from './pages/ProductListPage/ProductListPage';
 import SingleProductPage from './pages/SingleProductPage/SingleProductPage';
+import AppAdmin from './admin/components/AppAdmin';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Search from './components/Search/Search';
 
 const routes = [
 	{
 		path: '/',
 		exact: true,
-		main: () => <HomePage />
+		main: () => 
+			<Fragment>
+				<Header />  
+				<Search /> 
+				<HomePage />
+				<Footer /> 
+			</Fragment>
 	},
 	{
 		path: '/cart',
@@ -48,7 +58,13 @@ const routes = [
 		path: '/product/:id',
 		exact: false,
 		main: ({match}) => <SingleProductPage match={match} />
+	},
+	{
+		path: '/admins/:id',
+		exact: false,
+		main: ({match}) => <AppAdmin match={match} />
 	}
+
 ];
 
 export default routes;
