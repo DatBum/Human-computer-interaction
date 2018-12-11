@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
+import BackToTopButton from './BackToTopButton';
 
 class FooterContainer extends Component {
   render() {
@@ -7,6 +8,7 @@ class FooterContainer extends Component {
     ))
 
     return(
+      <Fragment>
       <div id="footer1">
         <div className="container-fluid footer-background">
           <div className="row">
@@ -47,6 +49,8 @@ class FooterContainer extends Component {
           </div>
         </div>
       </div>
+      <BackToTopButton/>
+      </Fragment>
     )
   }
 }
