@@ -11,7 +11,6 @@ class SideBar extends Component {
   }
 
 	render() {
-			console.log(this.props.sectionName);
 		return (
 			<div>
 				{/*SIDEBAR*/}
