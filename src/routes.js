@@ -27,37 +27,79 @@ const routes = [
 	{
 		path: '/cart',
 		exact: false,
-		main: () => <CartPage />
+		main: () => 
+			<Fragment>
+				<Header />  
+				<Search /> 
+				<CartPage />
+				<Footer /> 
+			</Fragment>
 	},
 	{
 		path: '/checkout',
 		exact: false,
-		main: () => <CheckoutPage />
+		main: () => 
+			<Fragment>
+				<Header />  
+				<Search />
+				<CheckoutPage />
+				<Footer /> 
+			</Fragment>
 	},
 	{
 		path: '/login',
 		exact: false,
-		main: () => <LoginPage />
+		main: () => 
+			<Fragment>
+				<Header />  
+				<Search />
+				<LoginPage />
+				<Footer /> 
+			</Fragment>
 	},
 	{
 		path: '/register',
 		exact: false,
-		main: () => <RegisterPage />
+		main: () => 
+			<Fragment>
+				<Header />  
+				<Search /> 
+				<RegisterPage />
+				<Footer /> 
+			</Fragment>
 	},
 	{
 		path: '/products',
 		exact: false,
-		main: () => <ProductPage />
+		main: () => 
+			<Fragment>
+				<Header />  
+				<Search /> 
+				<ProductPage />
+				<Footer /> 
+			</Fragment>
 	},
 	{
 		path: '/product-list',
 		exact: false,
-		main: () => <ProductListPage />
+		main: () => 
+			<Fragment>
+				<Header />  
+				<Search />
+				<ProductListPage />
+				<Footer /> 
+			</Fragment>	
 	},
 	{
 		path: '/product/:id',
 		exact: false,
-		main: ({match}) => <SingleProductPage match={match} />
+		main: ({match}) => 
+			<Fragment>
+				<Header />  
+				<Search /> 
+				<SingleProductPage match={match} />
+				<Footer /> 
+			</Fragment>
 	},
 	{
 		path: '/admins/:id',

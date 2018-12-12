@@ -18,7 +18,6 @@ class App extends Component {
     
     showContentMenus = (routes) => {
         var result = null;
-        var admin = false;
         if (routes.length > 0 ){
             result = routes.map((route, index) => {
                 return (
