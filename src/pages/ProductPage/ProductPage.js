@@ -1,10 +1,34 @@
 import React, { Component, Fragment } from 'react';
 import ProductLayout from './../../components/ProductLayout/ProductLayout';
+import ProductItem from './../../components/ProductItem/ProductItem';
 import Category from './../../components/Category/Category';
 import $ from 'jquery';
+import { actFetchProductsRequest, actFetchCategoriesRequest } from './../../actions/index';
+import { connect } from 'react-redux';
 
 class ProductPage extends Component {
+
+    componentDidMount() {
+        this.props.fetchAllCategories();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps && nextProps.products.length === 0) {
+            var { categories } = nextProps;
+            var result = [];
+
+            if (categories.length > 0) {
+                categories.map((category) => {
+                    result.push(category.id);
+                });
+            }
+            result.map((id) => {
+                this.props.fetchAllProducts(id);
+            });
+        }
+    }
     render() {
+        var { products, categories } = this.props;
         return (
             <Fragment>
                 <div id="site_content">
@@ -96,12 +120,9 @@ class ProductPage extends Component {
                                     </div>
                                 </div>
                                 <div className="row margin-top product-layout_width">
-                                    <ProductLayout />
-                                    <ProductLayout />
-                                    <ProductLayout />
-                                    <ProductLayout />
-                                    <ProductLayout />
-                                    <ProductLayout />
+                                    <ProductLayout>
+                                        {this.showProducts(products, categories)}
+                                    </ProductLayout>
                                 </div>
                                 <div className="row">
                                     <div className="col-sm-6 text-left" />
@@ -118,6 +139,28 @@ class ProductPage extends Component {
             </Fragment>
         );
     }
+
+    showProducts(products, categories) {
+        var result = null;
+        if (products.length > 0 && products.length === categories.length) {
+            result = products.map((productsEachCategory, index) => {
+                return(
+                    productsEachCategory.map((product, index) => {
+                        return(
+                            <ProductItem
+                                key={index}
+                                product={product}
+                                index={index}
+                            />
+                        );                   
+                    })
+                );
+            });
+            console.log(result);
+        }
+        return result;
+    }
+
 }
 
 function toggleChevron(e) {
@@ -129,4 +172,22 @@ function toggleChevron(e) {
 $('#accordion').on('hidden.bs.collapse', toggleChevron);
 $('#accordion').on('shown.bs.collapse', toggleChevron);
 
-export default ProductPage;
+const mapStateToProps = state => {
+    return {
+        products: state.products,
+        categories: state.categories
+    }
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        fetchAllProducts: (id) => {
+            dispatch(actFetchProductsRequest(id));
+        },
+        fetchAllCategories: () => {
+            dispatch(actFetchCategoriesRequest());
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

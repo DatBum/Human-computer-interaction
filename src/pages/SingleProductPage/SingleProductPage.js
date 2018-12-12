@@ -1,11 +1,39 @@
 import React, { Component, Fragment } from 'react';
 import ProductLayout from './../../components/ProductLayout/ProductLayout';
+import ProductItem from './../../components/ProductItem/ProductItem';
 import Category from './../../components/Category/Category';
 import ProductItemSingle from './../../components/ProductItem/ProductItemSingle';
 import $ from 'jquery';
+import { actFetchCategoriesRequest, actFetchProductsRequest } from './../../actions/index';
+import { connect } from 'react-redux';
 
 class SingleProductPage extends Component {
+
+    componentDidMount() {
+        this.props.fetchAllCategories();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps && nextProps.products.length === 0) {
+            var { categories } = nextProps;
+            var result = [];
+
+            if (categories.length > 0) {
+                categories.map((category) => {
+                    result.push(category.id);
+                });
+            }
+            result.map((id) => {
+                this.props.fetchAllProducts(id);
+            });
+        }
+    }
     render() {
+        var { products, categories, match } = this.props;
+        var id = 0;
+        if (match) {
+            id = match.params.id;
+        }
         return (
             <Fragment>
                 <div id="site_content">
@@ -19,15 +47,15 @@ class SingleProductPage extends Component {
                                     </a>
                                     <a>Lorem</a>
                                 </div>
-                                <ProductItemSingle />
+                                    {this.showProducts(products, categories, id)}
                                 <div className="rel-product">
                                     <div className="infoBoxHeading">
                                         <a>Related Product</a>
                                     </div>
                                     <div className="row product-layout_width">
-                                        <ProductLayout />
-                                        <ProductLayout />
-                                        <ProductLayout />
+                                        <ProductLayout>                                             
+                                            {this.showProducts(products, categories, 0)}
+                                        </ProductLayout>
                                     </div>
                                 </div>
                             </div>
@@ -37,11 +65,47 @@ class SingleProductPage extends Component {
             </Fragment>
         );
     }
+
+    showProducts(products, categories, id) {
+        var result = null;
+        if (id === 0) {
+            if (products.length > 0 && products.length === categories.length) {
+                result = products.map((productsEachCategory, index) => {
+                    return (
+                        productsEachCategory.map((product, index) => {
+                            return (
+                                <ProductItem
+                                    key={index}
+                                    product={product}
+                                    index={index}
+                                />
+                            );
+                        })
+                    );
+                });
+            }
+        } else {
+            if (products.length > 0 && products.length === categories.length) {
+                products.map((productsEachCategory, index) => {
+                    productsEachCategory.map((product, index) => {
+                        if (product.id === id)
+                            result = (<ProductItemSingle
+                                            key={index}
+                                            product={product}
+                                            index={index}
+                                        />)
+                    })
+                });
+            }
+        }
+        return result;
+    }
+
 }
 
-$("document").ready(function () {
+$("document").ready(function() {
 
-    $(".galleryimg").on("click", function () {
+    $(".galleryimg").on("click", function() {
         var src = $(this).attr('src');
         console.log(src)
         $(".changeimg").attr('src', src);
@@ -50,11 +114,29 @@ $("document").ready(function () {
 
 function toggleChevron(e) {
     $(e.target)
-    .prev('.panel-heading')
-    .find("i.indicator")
-    .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+        .prev('.panel-heading')
+        .find("i.indicator")
+        .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
 }
 $('#accordion').on('hidden.bs.collapse', toggleChevron);
 $('#accordion').on('shown.bs.collapse', toggleChevron);
 
-export default SingleProductPage;
+const mapStateToProps = state => {
+    return {
+        products: state.products,
+        categories: state.categories
+    }
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        fetchAllProducts: (id) => {
+            dispatch(actFetchProductsRequest(id));
+        },
+        fetchAllCategories: () => {
+            dispatch(actFetchCategoriesRequest());
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleProductPage);

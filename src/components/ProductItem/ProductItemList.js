@@ -1,20 +1,22 @@
 import React, { Component, Fragment} from 'react';
+import { Link } from 'react-router-dom';
 
 class ProductItemList extends Component {
     render() {
+        var { product } = this.props;
         return (
         	<Fragment>
             	<div className="product-layout product-list col-xs-12">
                     <div className="product-thumb">
                         <div className="image">
-                            <a href="/product/1">
+                            <Link to={`/product/${product.id}`}>
                                 <img
                                     className="img-responsive"
-                                    src="http://localhost:3000/images/d26.jpg"
+                                    src={product.img}
                                     width={200}
                                     height={200}
                                 />
-                            </a>
+                            </Link>
                         </div>
                         <div
                             className="product-details-box"
@@ -22,17 +24,16 @@ class ProductItemList extends Component {
                         >
                             <div className="caption">
                                 <h4 className="product_title">
-                                    <a href="/product/1">Lorem small</a>
+                                    <Link to={`/product/${product.id}`}>{product.name}</Link>
                                 </h4>
                                 <p>
-                                    Lorem Ipsum is simply dummy text of the printing
-                                    and typesetting industry....
+                                    {product.description}
                                 </p>
                                 <p className="price">
-                                    <span className="new_price">€110.00</span>
-                                    <span className="old_price">€122.00</span>
+                                    <span className="new_price">€{product.price - 10}</span>
+                                    <span className="old_price">€{product.price}</span>
                                     <span className="price-tax">
-                                        Ex Tax: €90.00
+                                        Ex Tax: €{product.price *75/100}
                                     </span>
                                 </p>
                             </div>

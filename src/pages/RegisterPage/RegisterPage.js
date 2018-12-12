@@ -63,7 +63,6 @@ class RegisterPage extends Component {
 			                                        className="form-control"
 			                                        id="input-firstname"
 			                                        placeholder="First Name"
-			                                        defaultValue
 			                                        name="firstname"
 			                                    />
 			                                </div>
@@ -80,8 +79,7 @@ class RegisterPage extends Component {
 			                                        type="text"
 			                                        className="form-control"
 			                                        id="input-lastname"
-			                                        placeholder="Last Name"
-			                                        defaultValue
+			                                        placeholder="Last Name"			                                        
 			                                        name="lastname"
 			                                    />
 			                                </div>
@@ -99,7 +97,6 @@ class RegisterPage extends Component {
 			                                        className="form-control"
 			                                        id="input-email"
 			                                        placeholder="E-Mail"
-			                                        defaultValue
 			                                        name="email"
 			                                    />
 			                                </div>
@@ -117,7 +114,6 @@ class RegisterPage extends Component {
 			                                        className="form-control"
 			                                        id="input-telephone"
 			                                        placeholder="Telephone"
-			                                        defaultValue
 			                                        name="telephone"
 			                                    />
 			                                </div>
@@ -135,7 +131,6 @@ class RegisterPage extends Component {
 			                                        className="form-control"
 			                                        id="input-fax"
 			                                        placeholder="Fax"
-			                                        defaultValue
 			                                        name="fax"
 			                                    />
 			                                </div>
@@ -156,7 +151,6 @@ class RegisterPage extends Component {
 			                                        className="form-control"
 			                                        id="input-company"
 			                                        placeholder="Company"
-			                                        defaultValue
 			                                        name="company"
 			                                    />
 			                                </div>
@@ -174,7 +168,6 @@ class RegisterPage extends Component {
 			                                        className="form-control"
 			                                        id="input-address-1"
 			                                        placeholder="Address 1"
-			                                        defaultValue
 			                                        name="address_1"
 			                                    />
 			                                </div>
@@ -192,7 +185,6 @@ class RegisterPage extends Component {
 			                                        className="form-control"
 			                                        id="input-address-2"
 			                                        placeholder="Address 2"
-			                                        defaultValue
 			                                        name="address_2"
 			                                    />
 			                                </div>
@@ -210,7 +202,6 @@ class RegisterPage extends Component {
 			                                        className="form-control"
 			                                        id="input-city"
 			                                        placeholder="City"
-			                                        defaultValue
 			                                        name="city"
 			                                    />
 			                                </div>
@@ -228,7 +219,6 @@ class RegisterPage extends Component {
 			                                        className="form-control"
 			                                        id="input-postcode"
 			                                        placeholder="Post Code"
-			                                        defaultValue
 			                                        name="postcode"
 			                                    />
 			                                </div>

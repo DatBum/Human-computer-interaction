@@ -2,6 +2,7 @@ import React, { Component, Fragment} from 'react';
 
 class ProductItemSingle extends Component {
     render() {
+        var { product } = this.props;
         return (
         	<Fragment>
             	<div className="row">
@@ -9,17 +10,17 @@ class ProductItemSingle extends Component {
                         <ul className="thumbnails">
                             <li>
                                 <a href="#" className="thumbnail fix-box">
-                                    <img className="changeimg" src="http://localhost:3000/images/img21.jpg" />
+                                    <img className="changeimg" src={product.img} />
                                 </a>
                             </li>
                             <li className="image-additional">
                                 <a title="Dianabol" className="thumbnail">
-                                    <img className="galleryimg" src="http://localhost:3000/images/img21.jpg" />
+                                    <img className="galleryimg" src={product.img} />
                                 </a>
                             </li>
                             <li className="image-additional">
                                 <a title="Proviron" className="thumbnail">
-                                    <img className="galleryimg" src="http://localhost:3000/images/img22.jpg" />
+                                    <img className="galleryimg" src={product.img} />
                                 </a>
                             </li>
                         </ul>
@@ -33,10 +34,10 @@ class ProductItemSingle extends Component {
                                 <i className="fa fa-exchange" />
                             </button>
                         </div>
-                        <h1 style={{ color: "#39baf0" }}>Lorem</h1>
+                        <h1 style={{ color: "#39baf0" }}>{product.name}</h1>
                         <ul className="list-unstyled product-section">
                             <li>
-                                <span>Product Code:</span> SAM1
+                                <span>Product Code:</span> {product.id}
                             </li>
                             <li>
                                 <span>Reward Points:</span> 1000
@@ -48,9 +49,9 @@ class ProductItemSingle extends Component {
                         </ul>
                         <ul className="list-unstyled">
                             <li>
-                                <h2>€241.99</h2>
+                                <h2>€{product.price}</h2>
                             </li>
-                            <li>Ex Tax: €199.99</li>
+                            <li>Ex Tax: €{product.price * 75/100}</li>
                         </ul>
                         <div id="product">
                             <div className="form-group">
@@ -124,14 +125,7 @@ class ProductItemSingle extends Component {
                             <div id="tab-description" className="tab-pane">
                                 <div className="row ">
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit. Curabitur metus leo, dignissim vitae bibendum
-                                        et, pretium id nulla. Nulla laoreet dapibus cursus.
-                                        Sed rhoncus bibendum neque non varius. Sed cursus ex
-                                        id imperdiet tincidunt. Vestibulum vel lacus vel
-                                        lectus vulputate condimentum pharetra ac mauris.
-                                        Vivamus dictum justo in est maximus, a pretium neque
-                                        sodales.
+                                        {product.description}
                                     </p>
                                 </div>
                             </div>
@@ -150,7 +144,6 @@ class ProductItemSingle extends Component {
                                                 type="text"
                                                 className="form-control"
                                                 id="input-name"
-                                                defaultValue
                                                 name="name"
                                             />
                                         </div>
