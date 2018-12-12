@@ -11,6 +11,7 @@ class SideBar extends Component {
   }
 
 	render() {
+			console.log(this.props.sectionName);
 		return (
 			<div>
 				{/*SIDEBAR*/}
@@ -54,7 +55,7 @@ class SideBar extends Component {
 
 function mapStateToProps(state) {
     return {
-        sidebar: state.sideBarReducers
+        sectionName: state.rootAdminReducer.sideBarReducers.sectionName
     };
 }
 

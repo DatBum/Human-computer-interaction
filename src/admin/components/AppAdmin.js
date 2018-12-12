@@ -4,7 +4,7 @@ import SideBar from '../containers/SideBar';
 import Main from './Main'
 import '../css/admin.css';
 
-class App extends Component {
+class AppAdmin extends Component {
   render() {
     return (
       <div>

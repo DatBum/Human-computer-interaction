@@ -6,7 +6,7 @@ import rootAdminReducer from '../admin/reducers/rootAdminReducer'
 const appReducers = combineReducers({
 	products,
 	categories,
-	...rootAdminReducer
+	rootAdminReducer
 });
 
 export default appReducers; 

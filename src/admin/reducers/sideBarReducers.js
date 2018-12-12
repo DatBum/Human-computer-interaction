@@ -7,7 +7,9 @@ const initialState = {
 export default function sideBarReducers(state = initialState, action) {
     switch (action.type) {
         case types.CLICK_SIDEBARITEM:
-            return {sectionName: action.text};
+            return {
+            	sectionName: action.text
+            };
 
         default:
             return state;
