@@ -47,7 +47,7 @@ const routes = [
 	{
 		path: '/product/:id',
 		exact: false,
-		main: ({match}) => <SingleProductPage />
+		main: ({match}) => <SingleProductPage match={match} />
 	}
 ];
 

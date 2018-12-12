@@ -61,8 +61,7 @@ class LoginPage extends Component {
 			                                            type="text"
 			                                            className="form-control"
 			                                            id="input-email"
-			                                            placeholder="E-Mail Address"
-			                                            defaultValue
+			                                            placeholder="E-Mail Address"			                        
 			                                            name="email"
 			                                        />
 			                                    </div>
@@ -79,8 +78,7 @@ class LoginPage extends Component {
 			                                            type="password"
 			                                            className="form-control"
 			                                            id="input-password"
-			                                            placeholder="Password"
-			                                            defaultValue
+			                                            placeholder="Password"			                                          
 			                                            name="password"
 			                                        />
 			                                    </div>
