@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import Title from '../components/Title';
-
+import SectionTitle from '../containers/SectionTitle';
 
 class Main extends Component {
 	render() {
 		return (
       <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-        <Title />
+        <SectionTitle />
         <div className="table-responsive">
           <table className="table table-striped table-sm">
             <thead>

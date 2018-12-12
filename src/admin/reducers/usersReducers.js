@@ -1,4 +1,4 @@
-import { ADD_USER, DELETE_USER, EDIT_USER, MARK_USER, MARK_ALL, CLEAR_MARKED } from '../constants/UserActionTypes';
+import { ADD_USER, DELETE_USER, EDIT_USER} from '../constants/UserActionTypes';
 
 const initialState = [{
     text: 'Use Redux',

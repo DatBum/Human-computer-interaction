@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as SideBarActions from '../actions/SideBarAction';
+import * as SideBarActions from '../actions/SideBarActions';
 
 class SideBar extends Component {
 
   handleSideBar = (e) =>{
-  	const sectionTitle = e.target.value;
-  	console.log(this.props.actions);
-  	//this.props.actions.clickSideBar(sectionTitle);
+  	const sectionTitle = e.target.text;
+  	this.props.actions.clickSideBar(sectionTitle);
   }
 
 	render() {
@@ -55,7 +54,7 @@ class SideBar extends Component {
 
 function mapStateToProps(state) {
     return {
-        sectionTitle: state.sideBarReducers
+        sidebar: state.sideBarReducers
     };
 }
 
