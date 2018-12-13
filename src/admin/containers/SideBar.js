@@ -14,9 +14,9 @@ class SideBar extends Component {
 		return (
 			<div>
 				{/*SIDEBAR*/}
-				<nav className="col-md-2 d-none d-md-block bg-light sidebar">
+				<nav className="col-md-2 d-none d-md-block bg-success sidebar">
 					<div className="sidebar-sticky">
-						<h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+						<h6 className="sidebar-heading d-flex justify-content-between align-items-center  mb-1 text-muted">
 						    <span>Danh mục</span>
 						    <a className="d-flex align-items-center text-muted" href="#">
 						      <span data-feather="plus-circle" />

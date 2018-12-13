@@ -4,7 +4,7 @@ import SectionTitle from '../containers/SectionTitle';
 class Main extends Component {
 	render() {
 		return (
-      <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <SectionTitle />
         <div className="table-responsive">
           <table className="table table-striped table-sm">
@@ -133,7 +133,7 @@ class Main extends Component {
             </tbody>
           </table>
         </div>
-      </main>
+      </div>
 		);
 	}
 }
