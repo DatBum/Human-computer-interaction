@@ -3,7 +3,7 @@ import ProductLayout from './../../components/ProductLayout/ProductLayout';
 import ProductItem from './../../components/ProductItem/ProductItem';
 import Category from './../../components/Category/Category';
 import $ from 'jquery';
-import { actFetchProductsRequest, actFetchCategoriesRequest } from './../../actions/index';
+import { actFetchProductsRequest, actFetchCategoriesRequest, actAddCart } from './../../actions/index';
 import { connect } from 'react-redux';
 
 class ProductPage extends Component {
@@ -27,6 +27,11 @@ class ProductPage extends Component {
             });
         }
     }
+
+    onBuy = (product) => {
+        this.props.addToCart(product);
+    }
+
     render() {
         var { products, categories } = this.props;
         return (
@@ -142,21 +147,25 @@ class ProductPage extends Component {
 
     showProducts(products, categories) {
         var result = null;
+        var dem = 0;
         if (products.length > 0 && products.length === categories.length) {
             result = products.map((productsEachCategory, index) => {
                 return(
                     productsEachCategory.map((product, index) => {
-                        return(
-                            <ProductItem
-                                key={index}
-                                product={product}
-                                index={index}
-                            />
-                        );                   
+                        if (dem < 12) {
+                            dem = dem + 1;
+                            return(
+                                <ProductItem
+                                    key={index}
+                                    product={product}
+                                    index={index}
+                                    onBuy={this.onBuy}
+                                />
+                            );      
+                        }             
                     })
                 );
             });
-            console.log(result);
         }
         return result;
     }
@@ -186,6 +195,9 @@ const mapDispatchToProps = (dispatch, props) => {
         },
         fetchAllCategories: () => {
             dispatch(actFetchCategoriesRequest());
+        },
+        addToCart: (id) => {
+            dispatch(actAddCart(id));
         }
     }
 }

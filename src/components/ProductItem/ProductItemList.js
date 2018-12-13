@@ -2,6 +2,15 @@ import React, { Component, Fragment} from 'react';
 import { Link } from 'react-router-dom';
 
 class ProductItemList extends Component {
+
+    onAddCart = (e, id) => {
+        e.nativeEvent.stopImmediatePropagation();
+        if (confirm('Bạn chắc chắn muốn mua?')) { //eslint-disable-line
+            this.props.onBuy(id);
+            localStorage.setItem(this.props.product.id, 1);
+        }
+    }
+
     render() {
         var { product } = this.props;
         return (
@@ -38,12 +47,13 @@ class ProductItemList extends Component {
                                 </p>
                             </div>
                             {/*<div class="button-group">!*/}
-                            <a
+                            <Link
                                 className="btn book-btn btn-default reg_button"
-                                href="/cart"
+                                to="/cart"
+                                onClick={(e) => this.onAddCart(e, product)}
                             >
                                 BUY NOW!
-                            </a>
+                            </Link>
                             <div className="pull-right">
                                 <button
                                     data-toggle="tooltip"

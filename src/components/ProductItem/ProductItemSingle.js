@@ -1,6 +1,35 @@
 import React, { Component, Fragment} from 'react';
+import { Link } from 'react-router-dom';
 
 class ProductItemSingle extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            quantity: 1
+        };
+    }
+
+    onAddCart = (e, id) => {
+        e.nativeEvent.stopImmediatePropagation();
+        if (confirm('Bạn chắc chắn muốn mua?')) { //eslint-disable-line
+            this.props.onBuy(id);
+            localStorage.setItem(this.props.product.id, this.state.quantity);
+        }
+    }
+
+    onChange = (e) => {
+        var target = e.target;
+        var { value } = target;
+        const re = /^[1-9\b]+$/;
+        if (value === '' || re.test(value)) {
+            this.setState({
+                quantity: value
+            });
+        }
+        else alert('Bạn đã nhập sai giá trị!');
+    }
+
     render() {
         var { product } = this.props;
         return (
@@ -64,16 +93,17 @@ class ProductItemSingle extends Component {
                                     id="input-quantity"
                                     size={2}
                                     defaultValue={1}
-                                    name="quantity"
+                                    onChange={this.onChange}
                                 />
                                 <input type="hidden" defaultValue={49} name="product_id" />
                                 <br />
-                                <a
+                                <Link 
+                                    to={`/cart`} 
                                     className="btn btn-primary btn-lg btn-block reg_button"
-                                    href="/cart"
+                                    onClick={(e) => this.onAddCart(e, product)}
                                 >
                                     <i className="fa fa-shopping-cart" /> BUY NOW!
-                                </a>
+                                </Link>
                             </div>
                         </div>
                         <div className="rating">
