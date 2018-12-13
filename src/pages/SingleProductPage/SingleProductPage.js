@@ -4,7 +4,7 @@ import ProductItem from './../../components/ProductItem/ProductItem';
 import Category from './../../components/Category/Category';
 import ProductItemSingle from './../../components/ProductItem/ProductItemSingle';
 import $ from 'jquery';
-import { actFetchCategoriesRequest, actFetchProductsRequest } from './../../actions/index';
+import { actFetchCategoriesRequest, actFetchProductsRequest, actAddCart } from './../../actions/index';
 import { connect } from 'react-redux';
 
 class SingleProductPage extends Component {
@@ -28,6 +28,11 @@ class SingleProductPage extends Component {
             });
         }
     }
+
+    onBuy = (product) => {
+        this.props.addToCart(product);
+    }
+
     render() {
         var { products, categories, match } = this.props;
         var id = 0;
@@ -69,17 +74,22 @@ class SingleProductPage extends Component {
     showProducts(products, categories, id) {
         var result = null;
         if (id === 0) {
+            var dem = 0;
             if (products.length > 0 && products.length === categories.length) {
                 result = products.map((productsEachCategory, index) => {
-                    return (
+                    return(
                         productsEachCategory.map((product, index) => {
-                            return (
-                                <ProductItem
-                                    key={index}
-                                    product={product}
-                                    index={index}
-                                />
-                            );
+                            if (dem < 3) {
+                                dem = dem + 1;
+                                return(
+                                    <ProductItem
+                                        key={index}
+                                        product={product}
+                                        index={index}
+                                        onBuy={this.onBuy}
+                                    />
+                                );      
+                            }             
                         })
                     );
                 });
@@ -93,6 +103,7 @@ class SingleProductPage extends Component {
                                             key={index}
                                             product={product}
                                             index={index}
+                                            onBuy={this.onBuy}
                                         />)
                     })
                 });
@@ -135,6 +146,9 @@ const mapDispatchToProps = (dispatch, props) => {
         },
         fetchAllCategories: () => {
             dispatch(actFetchCategoriesRequest());
+        },
+        addToCart: (id) => {
+            dispatch(actAddCart(id));
         }
     }
 }

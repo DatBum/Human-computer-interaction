@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
+import ProductItemCart from './../../components/ProductItem/ProductItemCart';
+import { connect } from 'react-redux';
+import { actDeleteCart } from './../../actions/index'; 
 
 class CartPage extends Component {
+
+	checkSubSum(sum){
+    	return (sum>0) ? Math.round(sum*0.8-2) : 0;
+	}
+
+	onDelete = (id) => {
+		this.props.DeleteProductFromCart(id);
+	}
+
     render() {
+    	var { carts } = this.props;
+    	console.log(carts);
         return (
             <div className="main-content">
 			    <div className="container cart-block-style">
@@ -28,69 +42,7 @@ class CartPage extends Component {
 			                        </tr>
 			                    </thead>
 			                    <tbody>
-			                        <tr>
-			                            <td className="text-center">
-			                                <a href="/product/1">
-			                                    <img
-			                                        title="ana"
-			                                        src="http://localhost:3000/images/img1.png"
-			                                        style={{
-			                                            width: "100px",
-			                                            height: "80px"
-			                                        }}
-			                                    />
-			                                </a>
-			                            </td>
-			                            <td className="text-left">
-			                                <a href="#">Anabel</a>
-			                                <br />
-			                                <small>Select: Blue</small>
-			                                <br />
-			                                <small>Reward Points: 200</small>
-			                            </td>
-			                            <td className="text-left">
-			                                <br />
-			                                Product 3
-			                            </td>
-			                            <td className="text-left">
-			                                <br />
-			                                <div
-			                                    style={{ maxWidth: "200px" }}
-			                                    className="input-group btn-block"
-			                                >
-			                                    <input
-			                                        type="text"
-			                                        className="form-control input-sm"
-			                                        size={1}
-			                                        defaultValue={1}
-			                                    />
-			                                    <span className="input-group-btn">
-			                                        <button
-			                                            className="btn btn-primary"
-			                                            type="submit"
-			                                            data-original-title="Update"
-			                                        >
-			                                            <i className="fa fa-refresh" />
-			                                        </button>
-			                                        <button
-			                                            className="btn btn-danger"
-			                                            type="button"
-			                                            data-original-title="Remove"
-			                                        >
-			                                            <i className="fa fa-times-circle" />
-			                                        </button>
-			                                    </span>
-			                                </div>
-			                            </td>
-			                            <td className="text-right">
-			                                <br />
-			                                $98.00
-			                            </td>
-			                            <td className="text-right">
-			                                <br />
-			                                $98.00
-			                            </td>
-			                        </tr>
+			                        {this.showProducts(carts)}
 			                    </tbody>
 			                </table>
 			            </div>
@@ -134,7 +86,6 @@ class CartPage extends Component {
 			                                className="form-control"
 			                                id="input-coupon"
 			                                placeholder="Enter your coupon Code here"
-			                                defaultValue
 			                                name="coupon"
 			                            />
 			                            <span className="input-group-btn">
@@ -248,7 +199,6 @@ class CartPage extends Component {
 			                                        className="form-control"
 			                                        id="input-postcode"
 			                                        placeholder="Post Code"
-			                                        defaultValue
 			                                        name="postcode"
 			                                    />
 			                                </div>
@@ -320,7 +270,7 @@ class CartPage extends Component {
 			                            <td className="text-right">
 			                                <strong>Sub-Total:</strong>
 			                            </td>
-			                            <td className="text-right">$80.00</td>
+			                            <td className="text-right">${this.checkSubSum(localStorage.total)}</td>
 			                        </tr>
 			                        <tr>
 			                            <td className="text-right">Coupon Code:</td>
@@ -336,13 +286,13 @@ class CartPage extends Component {
 			                        </tr>
 			                        <tr>
 			                            <td className="text-right">VAT (20%):</td>
-			                            <td className="text-right">$16.00</td>
+			                            <td className="text-right">{Math.round(localStorage.total*0.2)}</td>
 			                        </tr>
 			                        <tr>
 			                            <td className="text-right">
 			                                <strong>Order Total:</strong>
 			                            </td>
-			                            <td className="text-right">$98.00</td>
+			                            <td className="text-right">${localStorage.total}</td>
 			                        </tr>
 			                    </tbody>
 			                </table>
@@ -365,6 +315,42 @@ class CartPage extends Component {
 			</div>
         );
     }
+
+    showProducts(carts){
+		var result = null;
+	    if (carts.length > 0) {
+	    	localStorage.total = 0;
+	    	result = carts.map((product, index) => {
+	    		localStorage.total = Number(localStorage.total) + (product.price * localStorage.getItem(product.id));
+	            return(
+	                <ProductItemCart
+	                    key={index}
+	                    product={product}
+	                    index={index}
+	                    onDelete={this.onDelete}
+	                />
+	            );                   
+	        });
+	    }
+	    else {
+			localStorage.clear();
+    		localStorage.total = 0;
+	    }
+	    return result
+	}
 }
 
-export default CartPage;
+const mapStateToProps = state => {
+    return {
+        carts: state.carts,
+    }
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+	return{
+		DeleteProductFromCart: (id) => {
+			dispatch(actDeleteCart(id));
+		}
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CartPage);

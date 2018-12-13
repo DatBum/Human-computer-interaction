@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import ProductItemList from './../../components/ProductItem/ProductItemList';
 import Category from './../../components/Category/Category';
 import $ from 'jquery';
-import { actFetchProductsRequest, actFetchCategoriesRequest } from './../../actions/index';
+import { actFetchProductsRequest, actFetchCategoriesRequest, actAddCart } from './../../actions/index';
 import { connect } from 'react-redux';
 
 class ProductListPage extends Component {
@@ -25,6 +25,10 @@ class ProductListPage extends Component {
                 this.props.fetchAllProducts(id);
             });
         }
+    }
+
+    onBuy = (product) => {
+        this.props.addToCart(product);
     }
 
     render() {
@@ -132,17 +136,22 @@ class ProductListPage extends Component {
 
     showProducts(products, categories) {
         var result = null;
+        var dem = 0;
         if (products.length > 0 && products.length === categories.length) {
             result = products.map((productsEachCategory, index) => {
                 return(
                     productsEachCategory.map((product, index) => {
-                        return(
-                            <ProductItemList
-                                key={index}
-                                product={product}
-                                index={index}
-                            />
-                        );                   
+                        if (dem < 12){
+                            dem = dem + 1;
+                            return(
+                                <ProductItemList
+                                    key={index}
+                                    product={product}
+                                    index={index}
+                                    onBuy={this.onBuy}
+                                />
+                            );  
+                        }                   
                     })
                 );
             });
@@ -176,6 +185,9 @@ const mapDispatchToProps = (dispatch, props) => {
         },
         fetchAllCategories: () => {
             dispatch(actFetchCategoriesRequest());
+        },
+        addToCart: (id) => {
+            dispatch(actAddCart(id));
         }
     }
 }

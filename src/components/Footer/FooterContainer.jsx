@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import BackToTopButton from './BackToTopButton';
+import { Link } from 'react-router-dom';
 
 class FooterContainer extends Component {
   render() {
@@ -15,13 +16,13 @@ class FooterContainer extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-2 col-sm-3 col-xs-12 txt-center">
-                  <a href="home.html">
+                  <Link to="/">
                     <span className="logo-text">DRUGSTORE</span>
-                  </a>
+                  </Link>
                 </div>
                 <div className="col-md-7 col-sm-6 col-xs-12">
                   <div id="footer_menu">
-                    <a href="home.html">Home</a> | 
+                    <Link to="/">Home</Link> | 
                     <a href="#">About Us</a> | 
                     <a href="#">Disclaimer</a> | 
                     <a href="#">Guarantee</a> | 

@@ -5,3 +5,5 @@ export const UPDATE_PRODUCTS = 'UPDATE_PRODUCTS';
 export const DELETE_PRODUCTS = 'DELETE_PRODUCTS';
 export const EDIT_PRODUCTS= 'EDIT_PRODUCTS';
 export const GET_PRODUCT= 'GET_PRODUCT';
+export const ADD_CART = 'ADD_CART';
+export const DELETE_CART = 'DELETE_CART';

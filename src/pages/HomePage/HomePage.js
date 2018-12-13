@@ -3,7 +3,7 @@ import ProductLayout from './../../components/ProductLayout/ProductLayout';
 import ProductItem from './../../components/ProductItem/ProductItem';
 import Category from './../../components/Category/Category';
 import $ from 'jquery';
-import { actFetchProductsRequest, actFetchCategoriesRequest } from './../../actions/index';
+import { actFetchProductsRequest, actFetchCategoriesRequest, actAddCart } from './../../actions/index';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -29,6 +29,10 @@ class HomePage extends Component {
         }
     }
 
+    onBuy = (product) => {
+        this.props.addToCart(product);
+    }
+
     render() {
         var { products, categories } = this.props;
         // console.log(products);
@@ -48,208 +52,6 @@ class HomePage extends Component {
 							                    </a>
 							                </div>
 							            </div>
-							            {/*--slidder start-!*/}
-							            <div className="contentText">
-							                <div className="infoBoxHeading">Today Bestsellers</div>
-							                <div className="row">
-							                    <div className="col-md-12 col-sm-12 col-xs-12">
-							                        {/*                                        <div class="bg_best">*/}
-							                        <div className="bg_best">
-							                            <div className="owl-carousel">
-							                                <div className="item">
-							                                    <span>
-							                                        <a href="/product/1">
-							                                            <img
-							                                            	alt=""
-							                                                className="carasoul_image"
-							                                                src="http://localhost:3000/images/d1.jpg"
-							                                            />
-							                                        </a>
-							                                    </span>
-							                                    <a
-							                                        className="btn btn-default"
-							                                        href="/cart"
-							                                        role="button"
-							                                    >
-							                                        Buy Now!
-							                                    </a>
-							                                </div>
-							                                <div className="item">
-							                                    <span>
-							                                        <a href="/product/1">
-							                                            <img
-							                                            	alt=""
-							                                                className="carasoul_image"
-							                                                src="http://localhost:3000/images/img4.jpg"
-							                                            />
-							                                        </a>
-							                                    </span>
-							                                    <a
-							                                        className="btn btn-default"
-							                                        href="/cart"
-							                                        role="button"
-							                                    >
-							                                        Buy Now!
-							                                    </a>
-							                                </div>
-							                                <div className="item">
-							                                    <span>
-							                                        <a href="/product/1">
-							                                            <img
-							                                            	alt=""
-							                                                className="carasoul_image"
-							                                                src="http://localhost:3000/images/img6.jpg"
-							                                            />
-							                                        </a>
-							                                    </span>
-							                                    <a
-							                                        className="btn btn-default"
-							                                        href="/cart"
-							                                        role="button"
-							                                    >
-							                                        Buy Now!
-							                                    </a>
-							                                </div>
-							                                <div className="item">
-							                                    <span>
-							                                        <a href="/product/1">
-							                                            <img
-							                                            	alt=""
-							                                                className="carasoul_image"
-							                                                src="http://localhost:3000/images/img13.jpg"
-							                                            />
-							                                        </a>
-							                                    </span>
-							                                    <a
-							                                        className="btn btn-default"
-							                                        href="/cart"
-							                                        role="button"
-							                                    >
-							                                        Buy Now!
-							                                    </a>
-							                                </div>
-							                                <div className="item">
-							                                    <span>
-							                                        <a href="/product/1">
-							                                            <img
-							                                            	alt=""
-							                                                className="carasoul_image"
-							                                                src="http://localhost:3000/images/img14.jpg"
-							                                            />
-							                                        </a>
-							                                    </span>
-							                                    <a
-							                                        className="btn btn-default"
-							                                        href="/cart"
-							                                        role="button"
-							                                    >
-							                                        Buy Now!
-							                                    </a>
-							                                </div>
-							                                <div className="item">
-							                                    <span>
-							                                        <a href="/product/1">
-							                                            <img
-							                                            	alt=""
-							                                                className="carasoul_image"
-							                                                src="http://localhost:3000/images/img16.jpg"
-							                                            />
-							                                        </a>
-							                                    </span>
-							                                    <a
-							                                        className="btn btn-default"
-							                                        href="/cart"
-							                                        role="button"
-							                                    >
-							                                        Buy Now!
-							                                    </a>
-							                                </div>
-							                                <div className="item">
-							                                    <span>
-							                                        <a href="/product/1">
-							                                            <img
-							                                            	alt=""
-							                                                className="carasoul_image"
-							                                                src="http://localhost:3000/images/img15.jpg"
-							                                            />
-							                                        </a>
-							                                    </span>
-							                                    <a
-							                                        className="btn btn-default"
-							                                        href="/cart"
-							                                        role="button"
-							                                    >
-							                                        Buy Now!
-							                                    </a>
-							                                </div>
-																{/*<div class="item">
-			                                                            <span>
-			                                                                <a href="/product/1">
-			                                                                    <img class="carasoul_image" src="http://localhost:3000/images/d25.jpg">
-			                                                                </a></span>
-			                                                            <a class="btn btn-default"  href="/cart" role="button" >
-			                                                                Buy Now!
-			                                                            </a>
-			                                                        </div>*/}
-							                                <div className="item">
-							                                    <span>
-							                                        <a href="/product/1">
-							                                            <img
-							                                                className="carasoul_image"
-							                                                src="http://localhost:3000/images/img1.png"
-							                                            />
-							                                        </a>
-							                                    </span>
-							                                    <a
-							                                        className="btn btn-default"
-							                                        href="/cart"
-							                                        role="button"
-							                                    >
-							                                        Buy Now!
-							                                    </a>
-							                                </div>
-							                                <div className="item">
-							                                    <span>
-							                                        <a href="/product/1">
-							                                            <img
-							                                                className="carasoul_image"
-							                                                src="http://localhost:3000/images/d2.jpg"
-							                                            />
-							                                        </a>
-							                                    </span>
-							                                    <a
-							                                        className="btn btn-default"
-							                                        href="/cart"
-							                                        role="button"
-							                                    >
-							                                        Buy Now!
-							                                    </a>
-							                                </div>
-							                                <div className="item">
-							                                    <span>
-							                                        <a href="/product/1">
-							                                            <img
-							                                                className="carasoul_image"
-							                                                src="http://localhost:3000/images/d7.jpg"
-							                                            />
-							                                        </a>
-							                                    </span>
-							                                    <a
-							                                        className="btn btn-default"
-							                                        href="/cart"
-							                                        role="button"
-							                                    >
-							                                        Buy Now!
-							                                    </a>
-							                                </div>
-							                            </div> 
-						                	
-							                        </div>
-							                        {/*</div>*/}
-							                    </div>
-							                </div>
-							            </div>
-							            {/*--slidder End-!*/}
 							            {/*--content_1--!*/}
 							            <div className="contentText Static">
 							                <h1>What is Lorem Ipsum?</h1>
@@ -298,17 +100,22 @@ class HomePage extends Component {
 
     showProducts(products, categories) {
         var result = null;
+        var dem = 0;
         if (products.length > 0 && products.length === categories.length) {
         	result = products.map((productsEachCategory, index) => {
                 return(
                 	productsEachCategory.map((product, index) => {
-	                	return(
-	                		<ProductItem
-		                        key={index}
-		                        product={product}
-		                        index={index}
-		                	/>
-	                	);                   
+                		if (dem < 6) {
+                			dem = dem + 1;
+                			return(
+		                		<ProductItem
+			                        key={index}
+			                        product={product}
+			                        index={index}
+			                        onBuy={this.onBuy}
+			                	/>
+		                	);      
+                		}             
 	                })
 	            );
             });
@@ -366,6 +173,9 @@ const mapDispatchToProps = (dispatch, props) => {
         },
         fetchAllCategories: () => {
             dispatch(actFetchCategoriesRequest());
+        },
+        addToCart: (id) => {
+            dispatch(actAddCart(id));
         }
     }
 }

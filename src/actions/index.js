@@ -45,3 +45,17 @@ export const actFetchCategoriesRequest = () => {
 // 		});
 // 	}
 // }
+
+export const actAddCart = (product) => {
+	return{
+		type: Types.ADD_CART,
+		product
+	}
+}
+
+export const actDeleteCart = (id) => {
+	return {
+		type: Types.DELETE_CART,
+		id
+	}
+}
