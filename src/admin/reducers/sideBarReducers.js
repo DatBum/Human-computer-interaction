@@ -1,7 +1,7 @@
 import * as types from '../constants/SideBarActionTypes';
 
 const initialState = {
-    sectionName: "Khách Hàng"
+    sectionName: 'Khách Hàng'
 };
 
 export default function sideBarReducers(state = initialState, action) {

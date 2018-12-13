@@ -29,11 +29,6 @@ class SideBar extends Component {
 						      </a>
 						    </li>
 						    <li className="nav-item">
-						      <a className="nav-link" onClick={this.handleSideBar} href="#">
-						        Nhóm đối tác, nhà cung cấp
-						      </a>
-						    </li>
-						    <li className="nav-item">
 						      <a className="nav-link " onClick={this.handleSideBar} href="#">
 						        Orders
 						      </a>
@@ -54,7 +49,7 @@ class SideBar extends Component {
 
 function mapStateToProps(state) {
     return {
-        sectionName: state.rootAdminReducer.sideBarReducers.sectionName
+        sectionName: state.sideBarReducers
     };
 }
 
