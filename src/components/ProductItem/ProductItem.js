@@ -1,5 +1,12 @@
 import React, { Component, Fragment} from 'react';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux';
+
+const mapStateToProps = state => {
+  return({
+    currency: state.HeaderReducers.selectedCurrency
+  })
+}
 
 class ProductItem extends Component {
 
@@ -10,8 +17,17 @@ class ProductItem extends Component {
             localStorage.setItem(this.props.product.id, 1);
         }
     }
+    
+    getRate = (currency) => {
+      switch(currency) {
+        case 'VND': return 16000;
+        case 'AUD': return 1.4;
+        case 'USD': return 1;
+      }
+    }
 
     render() {
+        const rate = this.getRate(this.props.currency);
         var { product, index } = this.props;
         // console.log(product);
         return (
@@ -43,7 +59,7 @@ class ProductItem extends Component {
                                 <li className="li_product_price">
                                     <span className="old_price1" />
                                     <span className="new_price1">
-                                        €{product.price}
+                                        {this.props.currency}{product.price * rate}
                                     </span>
                                     <span className="saving1" />
                                 </li>
@@ -90,4 +106,4 @@ class ProductItem extends Component {
     }
 }
 
-export default ProductItem;
+export default connect(mapStateToProps, null)(ProductItem);

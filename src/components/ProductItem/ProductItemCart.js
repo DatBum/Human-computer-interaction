@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
+import {connect} from 'react-redux';
+
+const mapStateToProps = state => {
+  return({
+    currency: state.HeaderReducers.selectedCurrency
+  })
+}
 
 class ProductItemCart extends Component {
 
@@ -37,7 +44,16 @@ class ProductItemCart extends Component {
         } else alert('Bạn đã nhập sai giá trị!');
     }
 
+    getRate = (currency) => {
+      switch(currency) {
+        case 'VND': return 16000;
+        case 'AUD': return 1.4;
+        case 'USD': return 1;
+      }
+    }
+
     render() {
+      const rate = this.getRate(this.props.currency);
         var { product } = this.props;
         var { quantity } = this.state;
         return (
@@ -99,15 +115,15 @@ class ProductItemCart extends Component {
                 </td>
                 <td className="text-right">
                     <br />
-                    ${product.price}
+                    {this.props.currency}{product.price * rate}
                 </td>
                 <td className="text-right">
                     <br />
-                    ${product.price * quantity}
+                    {this.props.currency}{product.price * rate * quantity}
                 </td>
             </tr>
         );
     }
 }
 
-export default ProductItemCart;
+export default connect(mapStateToProps, null)(ProductItemCart);

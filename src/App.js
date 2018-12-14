@@ -1,10 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import routes from './routes';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import AppAdmin from './admin/components/AppAdmin';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import Search from './components/Search/Search';
 
 class App extends Component {
     render() {

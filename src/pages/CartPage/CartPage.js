@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProductItemCart from './../../components/ProductItem/ProductItemCart';
 import { connect } from 'react-redux';
 import { actDeleteCart } from './../../actions/index'; 
+import { setNewSum } from '../../actions/HeaderActions';
 
 class CartPage extends Component {
 	constructor(props){
@@ -13,30 +14,43 @@ class CartPage extends Component {
 
 	componentDidMount(){
 		this.setState({
-			ssumSupportum: Number(localStorage.total)
-		});
-	}
-
+			sumSupport: Number(localStorage.total)
+    });
+    this.props.setNewSum(Number(localStorage.total));
+  }
+  
 	checkSubSum(sum){
-    	return (sum>0) ? Math.round(sum*0.8-2) : 0;
+    let newSum;
+    newSum = (sum>0) ? Math.round(sum*0.8-2) : 0;
+    return newSum;
 	}
 
 	onDelete = (id) => {
-		this.props.DeleteProductFromCart(id);
+    this.props.DeleteProductFromCart(id);
 	}
-
+  
 	onChangeTotal(){
 		this.setState({
-			sumSupport: Number(localStorage.total)
-		});
-	}
+      sumSupport: Number(localStorage.total)
+    });
+    this.props.setNewSum(Number(localStorage.total));
+  }
+  
+  getRate = (currency) => {
+    switch(currency) {
+      case 'VND': return 16000;
+      case 'AUD': return 1.4;
+      case 'USD': return 1;
+    }
+  }
 
-    render() {
-    	var { carts } = this.props;
-    	var { sumSupport } = this.state;
+  render() {
+    const rate = this.getRate(this.props.currency);
+    var { carts } = this.props;
+    var { sumSupport } = this.state;
     	// console.log(carts);
-        return (
-            <div className="main-content">
+      return (
+        <div className="main-content">
 			    <div className="container cart-block-style">
 			        <div className="breadcrumbs">
 			            <a href="/">
@@ -289,29 +303,29 @@ class CartPage extends Component {
 			                            <td className="text-right">
 			                                <strong>Sub-Total:</strong>
 			                            </td>
-			                            <td className="text-right">${this.checkSubSum(Number(localStorage.total))}</td>
+			                            <td className="text-right">{this.props.currency}{this.checkSubSum(Number(localStorage.total)*rate)}</td>
 			                        </tr>
 			                        <tr>
 			                            <td className="text-right">Coupon Code:</td>
-			                            <td className="text-right">$0</td>
+			                            <td className="text-right">{this.props.currency}0</td>
 			                        </tr>
 			                        <tr>
 			                            <td className="text-right">Gift Voucher:</td>
-			                            <td className="text-right">$0</td>
+			                            <td className="text-right">{this.props.currency}0</td>
 			                        </tr>
 			                        <tr>
 			                            <td className="text-right">Eco Tax (-2.00):</td>
-			                            <td className="text-right">$2.00</td>
+			                            <td className="text-right">{this.props.currency}2.00</td>
 			                        </tr>
 			                        <tr>
 			                            <td className="text-right">VAT (20%):</td>
-			                            <td className="text-right">{Math.round(Number(localStorage.total)*0.2)}</td>
+			                            <td className="text-right">{Math.round(Number(localStorage.total)*0.2*rate)}</td>
 			                        </tr>
 			                        <tr>
 			                            <td className="text-right">
 			                                <strong>Order Total:</strong>
 			                            </td>
-			                            <td className="text-right">${Number(localStorage.total)}</td>
+			                            <td className="text-right">{this.props.currency}{Number(localStorage.total)*rate}</td>
 			                        </tr>
 			                    </tbody>
 			                </table>
@@ -363,6 +377,7 @@ class CartPage extends Component {
 const mapStateToProps = state => {
     return {
         carts: state.carts,
+        currency: state.HeaderReducers.selectedCurrency
     }
 }
 
@@ -370,7 +385,8 @@ const mapDispatchToProps = (dispatch, props) => {
 	return{
 		DeleteProductFromCart: (id) => {
 			dispatch(actDeleteCart(id));
-		}
+    },
+    setNewSum: sum => dispatch(setNewSum(sum))
 	}
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CartPage);
