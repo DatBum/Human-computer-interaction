@@ -1,6 +1,12 @@
 import React, { Component, Fragment} from 'react';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux';
 
+const mapStateToProps = state => {
+  return({
+    currency: state.HeaderReducers.selectedCurrency
+  })
+}
 class ProductItemSingle extends Component {
 
     constructor(props) {
@@ -30,7 +36,16 @@ class ProductItemSingle extends Component {
         else alert('Bạn đã nhập sai giá trị!');
     }
 
+    getRate = (currency) => {
+      switch(currency) {
+        case 'VND': return 16000;
+        case 'AUD': return 1.4;
+        case 'USD': return 1;
+      }
+    }
+
     render() {
+        const rate = this.getRate(this.props.currency);
         var { product } = this.props;
         return (
         	<Fragment>
@@ -78,9 +93,9 @@ class ProductItemSingle extends Component {
                         </ul>
                         <ul className="list-unstyled">
                             <li>
-                                <h2>€{product.price}</h2>
+                                <h2>{this.props.currency}{product.price * rate}</h2>
                             </li>
-                            <li>Ex Tax: €{product.price * 75/100}</li>
+                            <li>Ex Tax: {this.props.currency}{product.price * rate * 75/100}</li>
                         </ul>
                         <div id="product">
                             <div className="form-group">
@@ -257,4 +272,4 @@ class ProductItemSingle extends Component {
     }
 }
 
-export default ProductItemSingle;
+export default connect(mapStateToProps, null)(ProductItemSingle);

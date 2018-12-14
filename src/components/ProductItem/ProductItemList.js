@@ -1,5 +1,12 @@
 import React, { Component, Fragment} from 'react';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux';
+
+const mapStateToProps = state => {
+  return({
+    currency: state.HeaderReducers.selectedCurrency
+  })
+}
 
 class ProductItemList extends Component {
 
@@ -11,7 +18,16 @@ class ProductItemList extends Component {
         }
     }
 
+    getRate = (currency) => {
+      switch(currency) {
+        case 'VND': return 16000;
+        case 'AUD': return 1.4;
+        case 'USD': return 1;
+      }
+    }
+
     render() {
+      const rate = this.getRate(this.props.currency);
         var { product } = this.props;
         return (
         	<Fragment>
@@ -39,10 +55,10 @@ class ProductItemList extends Component {
                                     {product.description}
                                 </p>
                                 <p className="price">
-                                    <span className="new_price">€{product.price - 10}</span>
-                                    <span className="old_price">€{product.price}</span>
+                                    <span className="new_price">{this.props.currency}{product.price * rate - 10}</span>
+                                    <span className="old_price">{this.props.currency}{product.price * rate}</span>
                                     <span className="price-tax">
-                                        Ex Tax: €{product.price *75/100}
+                                        Ex Tax: {this.props.currency}{product.price * rate *75/100}
                                     </span>
                                 </p>
                             </div>
@@ -79,4 +95,4 @@ class ProductItemList extends Component {
     }
 }
 
-export default ProductItemList;
+export default connect(mapStateToProps, null)(ProductItemList);

@@ -3,13 +3,24 @@ import React, { Component } from 'react';
 class Item extends Component {
 
   render() {
-    const {item} = this.props;
-    const {index} = this.props;
-
+    const {item,index} = this.props;
+    let contents = {
+      ...item
+    }
+    var datas = [];
+    const contentsFilter = Object.keys(contents).forEach(function eachKey(key) { 
+      if(key !== 'img' && key !== 'id' && key !== 'password') {
+        datas = [...datas,(contents[key])];
+      }
+    })
+    console.log(datas);
+    const seedItem = datas.map((data)=> {
+      return(<td>{data}</td>)
+    });
     return (
     	<tr>
-        <td className="text-center">{index + 1}</td>
-        <td>{item.name}</td>
+        <td>{index + 1}</td>
+        {seedItem}
         <td>
           <button type="button" className="btn btn-warning">Edit</button>
           <button type="button" className="btn btn-danger">Delete</button>

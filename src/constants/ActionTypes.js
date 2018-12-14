@@ -8,3 +8,4 @@ export const GET_PRODUCT= 'GET_PRODUCT';
 export const ADD_CART = 'ADD_CART';
 export const DELETE_CART = 'DELETE_CART';
 export const SEARCH_PRODUCT = 'SEARCH_PRODUCT';
+export const SET_NEW_SUM = 'SET_NEW_SUM';
