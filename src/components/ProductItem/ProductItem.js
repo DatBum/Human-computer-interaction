@@ -59,7 +59,7 @@ class ProductItem extends Component {
                                 <li className="li_product_price">
                                     <span className="old_price1" />
                                     <span className="new_price1">
-                                        {this.props.currency}{product.price * rate}
+                                        {this.props.currency}{Math.round(product.price * rate)}
                                     </span>
                                     <span className="saving1" />
                                 </li>
