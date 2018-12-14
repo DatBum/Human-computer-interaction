@@ -1,1 +1,4 @@
 export const FETCH_ITEMS = 'FETCH_ITEMS';
+export const SEARCH_ITEMS = 'SEARCH_ITEMS';
+export const SEARCH_ONCHANGE = 'SEARCH_ONCHANGE'
+export const CLEAR_SEARCH = 'CLEAR_SEARCH'
