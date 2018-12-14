@@ -12,7 +12,7 @@ class ProductItemCart extends Component {
     }
 
     onDelete = (id) => {
-    	if (confirm('Bạn chắc chắn muốn xóa?')) { //eslint-disable-line
+        if (confirm('Bạn chắc chắn muốn xóa?')) { //eslint-disable-line
             this.props.onDelete(id);
         }
     }
@@ -20,13 +20,21 @@ class ProductItemCart extends Component {
     onChange = (e) => {
         var target = e.target;
         var { value } = target;
+        var { id, price } = this.props.product;
         const re = /^[1-9\b]+$/;
-		if (value === '' || re.test(value)) {
-			this.setState({
-				quantity: value
-			});
-		}
-		else alert('Bạn đã nhập sai giá trị!');
+        if (value === '' || re.test(value)) {
+            if (value < localStorage.getItem(id)){
+                localStorage.total = Number(localStorage.total)-(localStorage.getItem(id)-value)*price;
+            }
+            else {
+                localStorage.total = Number(localStorage.total)+(value-localStorage.getItem(id))*price;
+            }
+            localStorage.setItem(id, value);
+            this.setState({
+                quantity: value
+            });
+            this.props.onChangeTotal();
+        } else alert('Bạn đã nhập sai giá trị!');
     }
 
     render() {
