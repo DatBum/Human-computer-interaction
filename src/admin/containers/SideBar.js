@@ -25,7 +25,7 @@ class SideBar extends Component {
 						<ul className="nav flex-column ">
 						    <li className="nav-item">
 						      <a className="nav-link active" onClick={this.handleSideBar} href="#">
-						        Khách Hàng
+						        Users
 						      </a>
 						    </li>
 						    <li className="nav-item">

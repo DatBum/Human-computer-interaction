@@ -2,7 +2,7 @@ import * as sectionNames from '../constants/SectionNames';
 import * as types from '../constants/SideBarActionTypes';
 
 const initialState = {
-    sectionName: sectionNames.KHACHHANG,
+    sectionName: sectionNames.USERS,
     items: []
 };
 

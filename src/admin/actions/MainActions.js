@@ -9,8 +9,8 @@ const fetchAllItems = (items,sectionName) => {
 		items
 	}
 }
-
 export const actFetchItemsRequest = (sectionName) => {
+	console.log(sectionName);
 	if(sectionName === sectionNames.PRODUCTS){
 		return dispatch => {
 			return callApi('categories', 'GET', null).then(res => {
@@ -29,6 +29,13 @@ export const actFetchItemsRequest = (sectionName) => {
 						}
 					);
 		        });
+			});
+		};
+	}
+	else if(sectionName === sectionNames.USERS) {
+		return dispatch =>{
+			return callApi(`users`,'GET', null).then(res =>{
+				dispatch(fetchAllItems(res.data,sectionNames.USERS))
 			});
 		};
 	}
