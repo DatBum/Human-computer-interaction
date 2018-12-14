@@ -78,9 +78,9 @@ class ProductItemSingle extends Component {
                         </ul>
                         <ul className="list-unstyled">
                             <li>
-                                <h2>€{product.price}</h2>
+                                <h2>${product.price}</h2>
                             </li>
-                            <li>Ex Tax: €{product.price * 75/100}</li>
+                            <li>Ex Tax: ${product.price * 75/100}</li>
                         </ul>
                         <div id="product">
                             <div className="form-group">

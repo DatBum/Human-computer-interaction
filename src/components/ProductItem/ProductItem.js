@@ -43,7 +43,7 @@ class ProductItem extends Component {
                                 <li className="li_product_price">
                                     <span className="old_price1" />
                                     <span className="new_price1">
-                                        €{product.price}
+                                        ${product.price}
                                     </span>
                                     <span className="saving1" />
                                 </li>

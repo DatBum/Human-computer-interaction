@@ -39,10 +39,10 @@ class ProductItemList extends Component {
                                     {product.description}
                                 </p>
                                 <p className="price">
-                                    <span className="new_price">€{product.price - 10}</span>
-                                    <span className="old_price">€{product.price}</span>
+                                    <span className="new_price">${product.price - 10}</span>
+                                    <span className="old_price">${product.price}</span>
                                     <span className="price-tax">
-                                        Ex Tax: €{product.price *75/100}
+                                        Ex Tax: ${product.price *75/100}
                                     </span>
                                 </p>
                             </div>

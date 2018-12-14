@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProductItemCart from './../../components/ProductItem/ProductItemCart';
 import { connect } from 'react-redux';
 import { actDeleteCart } from './../../actions/index'; 
+import { setNewSum } from '../../actions/HeaderActions';
 
 class CartPage extends Component {
 	constructor(props){
@@ -13,30 +14,34 @@ class CartPage extends Component {
 
 	componentDidMount(){
 		this.setState({
-			ssumSupportum: Number(localStorage.total)
-		});
-	}
-
+			sumSupport: Number(localStorage.total)
+    });
+    this.props.setNewSum(Number(localStorage.total));
+  }
+  
 	checkSubSum(sum){
-    	return (sum>0) ? Math.round(sum*0.8-2) : 0;
+    let newSum;
+    newSum = (sum>0) ? Math.round(sum*0.8-2) : 0;
+    return newSum;
 	}
 
 	onDelete = (id) => {
-		this.props.DeleteProductFromCart(id);
+    this.props.DeleteProductFromCart(id);
 	}
-
+  
 	onChangeTotal(){
 		this.setState({
-			sumSupport: Number(localStorage.total)
-		});
+      sumSupport: Number(localStorage.total)
+    });
+    this.props.setNewSum(Number(localStorage.total));
 	}
-
-    render() {
-    	var { carts } = this.props;
-    	var { sumSupport } = this.state;
+  
+  render() {
+    var { carts } = this.props;
+    var { sumSupport } = this.state;
     	// console.log(carts);
-        return (
-            <div className="main-content">
+      return (
+        <div className="main-content">
 			    <div className="container cart-block-style">
 			        <div className="breadcrumbs">
 			            <a href="/">
@@ -370,7 +375,8 @@ const mapDispatchToProps = (dispatch, props) => {
 	return{
 		DeleteProductFromCart: (id) => {
 			dispatch(actDeleteCart(id));
-		}
+    },
+    setNewSum: sum => dispatch(setNewSum(sum))
 	}
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CartPage);
