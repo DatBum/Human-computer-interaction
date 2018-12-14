@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as SideBarActions from '../actions/SideBarActions';
+import { Link } from 'react-router-dom';
+
 
 class SideBar extends Component {
 	
@@ -16,6 +18,10 @@ class SideBar extends Component {
 				{/*SIDEBAR*/}
 				<nav className="col-md-2 d-none d-md-block bg-success sidebar">
 					<div className="sidebar-sticky">
+						<Link to="/" className="logo-text">
+	        				Medi<span style={{color: '#39BAF0', fontSize: '40px'}}>STORE
+	        				</span>
+	      				</Link>
 						<h6 className="sidebar-heading d-flex justify-content-between align-items-center  mb-1 text-muted">
 						    <span>Danh mục</span>
 						    <a className="d-flex align-items-center text-muted" href="#">
@@ -24,7 +30,7 @@ class SideBar extends Component {
 						</h6>
 						<ul className="nav flex-column ">
 						    <li className="nav-item">
-						      <a className="nav-link active" onClick={this.handleSideBar} href="#">
+						      <a className="nav-link" onClick={this.handleSideBar} href="#">
 						        Users
 						      </a>
 						    </li>

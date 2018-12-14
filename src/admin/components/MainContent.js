@@ -7,7 +7,7 @@ export default class MainContent extends Component {
 	render() {
     const {items} = this.props;
     const elmtItems = items.map((item,index)=>
-      <Item key={index} item={item} index={index}/>
+      <Item deleteItem={this.props.deleteItem} sectionName={this.props.sectionName} key={index} item={item} index={index}/>
     )
 
 		return (
