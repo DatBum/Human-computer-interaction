@@ -7,6 +7,7 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import ProductPage from './pages/ProductPage/ProductPage';
 import ProductListPage from './pages/ProductListPage/ProductListPage';
 import SingleProductPage from './pages/SingleProductPage/SingleProductPage';
+import SearchPage from './pages/SearchPage/SearchPage';
 import AppAdmin from './admin/components/AppAdmin';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -76,6 +77,17 @@ const routes = [
 				<Header />  
 				<Search /> 
 				<ProductPage />
+				<Footer /> 
+			</Fragment>
+	},
+	{
+		path: '/search/:text',
+		exact: false,
+		main: ({match}) => 
+			<Fragment>
+				<Header />  
+				<Search /> 
+				<SearchPage match={match}/>
 				<Footer /> 
 			</Fragment>
 	},

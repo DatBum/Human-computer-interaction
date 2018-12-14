@@ -31,21 +31,6 @@ export const actFetchCategoriesRequest = () => {
 	};
 }
 
-// export const actGetProduct = (product) => {
-// 	return {
-// 		type: Types.GET_PRODUCT,
-// 		product
-// 	}
-// }
-
-// export const actGetProductRequest = (idCategory, idProduct) => {
-// 	return dispatch => {
-// 		return callApi(`categories/${idCategory}/products/${idProduct}`,'GET',null).then(res => {
-// 			dispatch(actFetchCategories(res.data))
-// 		});
-// 	}
-// }
-
 export const actAddCart = (product) => {
 	return{
 		type: Types.ADD_CART,
@@ -57,5 +42,13 @@ export const actDeleteCart = (id) => {
 	return {
 		type: Types.DELETE_CART,
 		id
+	}
+}
+
+export const actSearch = (product, name) => {
+	return {
+		type: Types.SEARCH_PRODUCT,
+		product,
+		name
 	}
 }

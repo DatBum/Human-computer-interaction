@@ -69,7 +69,7 @@ class HomePage extends Component {
 							            {/*--content_1 End--!*/}
 							            {/*--content_2 For New Products--!*/}
 							            <div className="contentText">
-							                <h1>New Products For March</h1>
+							                <h1>New Products For December</h1>
 							                
 							                    <ProductLayout>							                    
 							                    	{this.showProducts(products, categories)}

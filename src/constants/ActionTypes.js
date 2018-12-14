@@ -7,3 +7,4 @@ export const EDIT_PRODUCTS= 'EDIT_PRODUCTS';
 export const GET_PRODUCT= 'GET_PRODUCT';
 export const ADD_CART = 'ADD_CART';
 export const DELETE_CART = 'DELETE_CART';
+export const SEARCH_PRODUCT = 'SEARCH_PRODUCT';

@@ -1,6 +1,26 @@
 import React, { Component, Fragment} from 'react';
+import { Link } from 'react-router-dom';
 
-class Footer extends Component {
+class Search extends Component {
+	constructor(props) {
+        super(props);
+        this.state = {
+            text: ''
+        };
+    }
+
+	onChange = (e) => {
+        var target = e.target;
+        var { value } = target;
+        this.setState({
+        	text: value
+        });
+    }
+
+    setCount = () => {
+    	localStorage.count = 0;
+    }
+
     render() {
         return (
         	<Fragment>
@@ -15,9 +35,14 @@ class Footer extends Component {
 				                            placeholder="Enter search keywords here"
 				                            className="form-control input-lg"
 				                            id="inputGroup"
+				                            onChange={this.onChange}
 				                        />
 				                        <span className="input-group-addon">
-				                            <a href="#" style={{ color: "white" }}>
+				                            <a 
+				                            	href={`/search/${this.state.text}`} 
+				                            	style={{ color: "white" }}
+				                            	onClick={this.setCount}
+			                            	>
 				                                Search
 				                            </a>
 				                        </span>
@@ -59,4 +84,4 @@ class Footer extends Component {
     }
 }
 
-export default Footer;
+export default Search;
