@@ -5,6 +5,7 @@ import carts from './carts';
 import searchProducts from './searchProducts';
 import rootAdminReducer from '../admin/reducers/rootAdminReducer'
 import HeaderReducers from './HeaderReducers';
+import LoginFormReducer from './LoginFormReducer';
 
 const appReducers = combineReducers({
 	products,
@@ -12,7 +13,8 @@ const appReducers = combineReducers({
 	carts,
 	searchProducts,
 	rootAdminReducer,
-  HeaderReducers
+  HeaderReducers,
+  LoginFormReducer
 });
 
 export default appReducers; 

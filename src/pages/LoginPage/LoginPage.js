@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import ListGroup from './../../components/ListGroup/ListGroup';
+import LoginFormContainer from './LoginFormContainer';
 
 class LoginPage extends Component {
     render() {
@@ -37,68 +38,7 @@ class LoginPage extends Component {
 			                            </a>
 			                            {/*</div>!*/}
 			                        </div>
-			                        <div
-			                            style={{ borderLeft: "1px dashed #c1bebe" }}
-			                            className="col-sm-6"
-			                        >
-			                            {/*<div class="well">!*/}
-			                            <h2>Returning Customer</h2>
-			                            <p>I am a returning customer</p>
-			                            <form
-			                                encType="multipart/form-data"
-			                                role="form"
-			                                className="form-horizontal add_margin"
-			                            >
-			                                <div className="form-group">
-			                                    <label
-			                                        htmlFor="input-email"
-			                                        className="control-label col-sm-4"
-			                                    >
-			                                        E-Mail Address
-			                                    </label>
-			                                    <div className="col-sm-8">
-			                                        <input
-			                                            type="text"
-			                                            className="form-control"
-			                                            id="input-email"
-			                                            placeholder="E-Mail Address"			                        
-			                                            name="email"
-			                                        />
-			                                    </div>
-			                                </div>
-			                                <div className="form-group">
-			                                    <label
-			                                        htmlFor="input-password"
-			                                        className="control-label col-sm-4"
-			                                    >
-			                                        Password
-			                                    </label>
-			                                    <div className="col-sm-8">
-			                                        <input
-			                                            type="password"
-			                                            className="form-control"
-			                                            id="input-password"
-			                                            placeholder="Password"			                                          
-			                                            name="password"
-			                                        />
-			                                    </div>
-			                                </div>
-			                                <p className="cat_name">
-			                                    {" "}
-			                                    <a href="#">Forgot Passowrd? Click here.</a>
-			                                </p>
-			                                {/*<input type="submit" value="Login" class="btn btn-primary reg_button" />!*/}
-			                                <button
-			                                    className="btn btn-primary reg_button"
-			                                    value="Login"
-			                                    type="submit"
-			                                >
-			                                    <i className="fa fa-key" />
-			                                    &nbsp; Login
-			                                </button>
-			                            </form>
-			                            {/*</div>!*/}
-			                        </div>
+			                        <LoginFormContainer/>
 			                    </div>
 			                </div>
 			            </div>
