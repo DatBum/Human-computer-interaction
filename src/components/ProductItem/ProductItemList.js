@@ -55,10 +55,10 @@ class ProductItemList extends Component {
                                     {product.description}
                                 </p>
                                 <p className="price">
-                                    <span className="new_price">{this.props.currency}{product.price * rate - 10}</span>
-                                    <span className="old_price">{this.props.currency}{product.price * rate}</span>
+                                    <span className="new_price">{this.props.currency}{Math.round(product.price * rate) - 10}</span>
+                                    <span className="old_price">{this.props.currency}{Math.round(product.price * rate)}</span>
                                     <span className="price-tax">
-                                        Ex Tax: {this.props.currency}{product.price * rate *75/100}
+                                        Ex Tax: {this.props.currency}{Math.round(product.price * rate *75/100)}
                                     </span>
                                 </p>
                             </div>

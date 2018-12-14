@@ -115,11 +115,11 @@ class ProductItemCart extends Component {
                 </td>
                 <td className="text-right">
                     <br />
-                    {this.props.currency}{product.price * rate}
+                    {this.props.currency}{Math.round(product.price * rate)}
                 </td>
                 <td className="text-right">
                     <br />
-                    {this.props.currency}{product.price * rate * quantity}
+                    {this.props.currency}{Math.round(product.price * rate) * quantity}
                 </td>
             </tr>
         );
