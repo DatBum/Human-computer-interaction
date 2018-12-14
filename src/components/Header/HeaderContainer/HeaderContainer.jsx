@@ -10,7 +10,7 @@ const mapStateToProps = state => {
   return {
     dropDowns: state.HeaderReducers.dropDowns,
     selectedCurrency: state.HeaderReducers.selectedCurrency,
-    // cartProducts: state.carts.products
+    cartProducts: state.carts
   }
 }
 
@@ -36,7 +36,7 @@ class ConnectedHeaderContainer extends Component {
           <div className="col-md-4 col-md-offset-4 col-sm-offset-2  col-sm-6 col-xs-12">
             <div id="top_right">
               {/* <Cart/> */}
-              <Cart selectedCurrency={this.props.selectedCurrency}/>
+              <Cart selectedCurrency={this.props.selectedCurrency} products={this.props.cartProducts}/>
               <div id="bottom_right">
                 <div className="row">
                   <LoginButtons/> 
