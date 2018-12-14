@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ProductTableHeader extends Component {
+class ItemsTableHeader extends Component {
 
   render() {
     let {item} = this.props;
@@ -12,7 +12,7 @@ class ProductTableHeader extends Component {
         else return true;
     });
     const toHeaderElem = headers.map(header=>{
-      return (<th className="text-center">{header}</th>);
+      return (<th key={header} className="text-center">{header}</th>);
     });
     return (
       <thead>
@@ -26,4 +26,4 @@ class ProductTableHeader extends Component {
   }
 }
 
-export default ProductTableHeader;
+export default ItemsTableHeader;

@@ -13,9 +13,8 @@ class Item extends Component {
         datas = [...datas,(contents[key])];
       }
     })
-    console.log(datas);
-    const seedItem = datas.map((data)=> {
-      return(<td>{data}</td>)
+    const seedItem = datas.map((data,index)=> {
+      return(<td key={index}>{data}</td>)
     });
     return (
     	<tr>
