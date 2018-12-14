@@ -1,8 +1,8 @@
 import React from 'react';
 
-const dropDown = (props) => {
+const dropDownLanguage = (props) => {
   const items = props.items.map(item => (
-    <li><a onClick={() => props.clicked(item)}>{item}</a></li>
+    <li><a >{item}</a></li>
   ));
   
   return(
@@ -18,4 +18,4 @@ const dropDown = (props) => {
   )
 }
 
-export default dropDown;
+export default dropDownLanguage;
