@@ -4,6 +4,18 @@ import { connect } from 'react-redux';
 import { actDeleteCart } from './../../actions/index'; 
 
 class CartPage extends Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			sumSupport : 0
+		};
+	}
+
+	componentDidMount(){
+		this.setState({
+			ssumSupportum: Number(localStorage.total)
+		});
+	}
 
 	checkSubSum(sum){
     	return (sum>0) ? Math.round(sum*0.8-2) : 0;
@@ -13,9 +25,16 @@ class CartPage extends Component {
 		this.props.DeleteProductFromCart(id);
 	}
 
+	onChangeTotal(){
+		this.setState({
+			sumSupport: Number(localStorage.total)
+		});
+	}
+
     render() {
     	var { carts } = this.props;
-    	console.log(carts);
+    	var { sumSupport } = this.state;
+    	// console.log(carts);
         return (
             <div className="main-content">
 			    <div className="container cart-block-style">
@@ -270,7 +289,7 @@ class CartPage extends Component {
 			                            <td className="text-right">
 			                                <strong>Sub-Total:</strong>
 			                            </td>
-			                            <td className="text-right">${this.checkSubSum(localStorage.total)}</td>
+			                            <td className="text-right">${this.checkSubSum(Number(localStorage.total))}</td>
 			                        </tr>
 			                        <tr>
 			                            <td className="text-right">Coupon Code:</td>
@@ -286,13 +305,13 @@ class CartPage extends Component {
 			                        </tr>
 			                        <tr>
 			                            <td className="text-right">VAT (20%):</td>
-			                            <td className="text-right">{Math.round(localStorage.total*0.2)}</td>
+			                            <td className="text-right">{Math.round(Number(localStorage.total)*0.2)}</td>
 			                        </tr>
 			                        <tr>
 			                            <td className="text-right">
 			                                <strong>Order Total:</strong>
 			                            </td>
-			                            <td className="text-right">${localStorage.total}</td>
+			                            <td className="text-right">${Number(localStorage.total)}</td>
 			                        </tr>
 			                    </tbody>
 			                </table>
@@ -328,6 +347,7 @@ class CartPage extends Component {
 	                    product={product}
 	                    index={index}
 	                    onDelete={this.onDelete}
+	                    onChangeTotal={this.onChangeTotal.bind(this)}
 	                />
 	            );                   
 	        });
