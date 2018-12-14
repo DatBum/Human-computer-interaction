@@ -1,8 +1,8 @@
 import React from 'react';
 
 const dropDownLanguage = (props) => {
-  const items = props.items.map(item => (
-    <li><a >{item}</a></li>
+  const items = props.items.map((item, i) => (
+    <li key={i}><a >{item}</a></li>
   ));
   
   return(

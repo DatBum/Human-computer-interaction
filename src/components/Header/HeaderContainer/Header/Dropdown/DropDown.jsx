@@ -1,8 +1,8 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const dropDown = (props) => {
-  const items = props.items.map(item => (
-    <li><a onClick={() => props.clicked(item)}>{item}</a></li>
+  const items = props.items.map((item, i) => (
+    <li key={i}><Link to="" onClick={() => props.clicked(item)}>{item}</Link></li>
   ));
   
   return(

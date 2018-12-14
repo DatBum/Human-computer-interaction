@@ -5,7 +5,7 @@ const cart = (props) => {
   const number = props.products.length;
   const rate = (currency) => {
     switch(currency) {
-      case 'VND': return 23000;
+      case 'VND': return 16000;
       case 'AUD': return 1.4;
       case 'USD': return 1;
     }

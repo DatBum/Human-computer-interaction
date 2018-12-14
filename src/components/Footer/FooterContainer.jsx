@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 class FooterContainer extends Component {
   render() {
-    const socials = ['facebook', 'twitter', 'yahoo', 'envelope', 'linkedin'].map(social => (
-      <a href="#" className="btn btn-default reg_button"><i className={'fa fa-' + social} /></a>
+    const socials = ['facebook', 'twitter', 'yahoo', 'envelope', 'linkedin'].map((social, i) => (
+      <a key={i} href="#" className="btn btn-default reg_button"><i className={'fa fa-' + social} /></a>
     ))
 
     return(
