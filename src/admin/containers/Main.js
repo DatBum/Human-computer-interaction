@@ -44,8 +44,15 @@ class Main extends Component {
           onClickSearchGo={actions.handleSearch} 
           clearSearch={actions.handleClearSearch}
           sectionName={section.sectionName}
+          toggleForm={actions.toggleForm}
+          isShowForm={mainProps.isShowForm}
         />
-        <MainContent deleteItem={actions.deleteItem} sectionName={section.sectionName} items={items}/>
+        <MainContent 
+          toggleForm={actions.toggleForm} 
+          deleteItem={actions.deleteItem}
+          sectionName={section.sectionName} 
+          items={items}
+        />
       </div>
 		);
 	}

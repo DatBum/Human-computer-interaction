@@ -7,6 +7,10 @@ class Item extends Component {
     this.props.deleteItem(this.props.sectionName,this.props.item);
   }
 
+  handleEdit = () => {
+    this.props.toggleForm();
+  }
+
   render() {
     const {sectionName, item, index} = this.props;
     let contents = {
@@ -27,7 +31,7 @@ class Item extends Component {
         <td>{index + 1}</td>
         {seedItem}
         <td>
-            <button id={item.id} type="button" className="btn btn-warning">Edit</button>
+            <button onClick={this.handleEdit} id={item.id} type="button" className="btn btn-warning">Edit</button>
             <button onClick={this.handleDeleteItem()} type="button" className="btn btn-danger">Delete</button>
         </td>
       </tr>

@@ -15,7 +15,7 @@ export default class MainHeader extends Component {
 
   render() {
     return (
-      <div className="Search col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      
         <div className="input-group">
           <input value={this.props.onchangeSearchStr} onChange={this.handleChange} type="text" className="form-control" placeholder="Search for..." />
           <span className="input-group-btn">
@@ -23,7 +23,7 @@ export default class MainHeader extends Component {
               <button onClick={this.handleClear} className="btn btn-warning" type="button">Clear</button>
           </span>
         </div>
-      </div>
+      
     );
   }
 }
