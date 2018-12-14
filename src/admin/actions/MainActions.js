@@ -2,22 +2,12 @@ import * as types from '../constants/MainActionTypes';
 import callApi from '../../utils/apiCaller';
 import * as sectionNames from '../constants/SectionNames';
 
-const fetch = (items) => {
-    return {
-    	type: types.FETCH_ITEMS,
-        items
-    };
-}
-
-
-const fetchAllItems = (id) => {
-	return dispatch => {
-		return callApi(`categories/${id}/products`, 'GET', null).then(
-			res => {
-				dispatch(fetch(res.data));
-			}
-		);
-	};
+const fetchAllItems = (items,sectionName) => {
+	return {
+		type: types.FETCH_ITEMS,
+		sectionName,
+		items
+	}
 }
 
 export const actFetchItemsRequest = (sectionName) => {
@@ -25,6 +15,7 @@ export const actFetchItemsRequest = (sectionName) => {
 		return dispatch => {
 			return callApi('categories', 'GET', null).then(res => {
 				let categories = res.data;
+				var data = null;
 				let result = [];
 		        if (categories.length > 0) {
 		            categories.map((category) => {
@@ -32,7 +23,11 @@ export const actFetchItemsRequest = (sectionName) => {
 		            });
 		        }
 		        result.map((id) => {
-		            dispatch(fetchAllItems(id));
+		        	callApi(`categories/${id}/products`, 'GET', null).then(
+						res => {
+							dispatch(fetchAllItems(res.data,sectionNames.PRODUCTS))
+						}
+					);
 		        });
 			});
 		};

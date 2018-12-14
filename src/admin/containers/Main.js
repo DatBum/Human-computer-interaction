@@ -4,19 +4,18 @@ import MainContent from '../components/MainContent';
 import * as MainActions from '../actions/MainActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+// import Item from '../components/Item';
 
 class Main extends Component {
 
-  componentWillMount() {
-    this.props.mainActions.actFetchItemsRequest(this.props.sectionName);
-  }
-
 	render() {
-    const {sectionName, items} = this.props;
-    console.log(items);
+    const {section} = this.props;
+    // console.log("render");
+    console.log(section.sectionName);
+
 		return (
       <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <MainHeader sectionName={sectionName}/>
+        <MainHeader sectionName={section.sectionName}/>
         <MainContent />
       </div>
 		);
@@ -25,14 +24,12 @@ class Main extends Component {
 
 const mapStateToProps = state => {
     return {
-      sectionName: state.rootAdminReducer.sideBarReducers.sectionName,
-      items: state.rootAdminReducer.mainReducers
+      section: state.rootAdminReducer.sideBarReducers,
     }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    mainActions: bindActionCreators(MainActions, dispatch)
     };
 }
 
