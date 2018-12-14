@@ -1,13 +1,13 @@
-import * as types from '../constants/SideBarActionTypes';
+import * as types from '../constants/MainActionTypes';
 import callApi from '../../utils/apiCaller';
 import * as sectionNames from '../constants/SectionNames';
 
-function clickSideBar(items,sectionName) {
-    return {
-    	type: types.CLICK_SIDEBARITEM,
-        sectionName,
-        items
-    };
+const fetchAllItems = (items,sectionName) => {
+	return {
+		type: types.FETCH_ITEMS,
+		sectionName,
+		items
+	}
 }
 
 export const actFetchItemsRequest = (sectionName) => {
@@ -25,7 +25,7 @@ export const actFetchItemsRequest = (sectionName) => {
 		        result.map((id) => {
 		        	callApi(`categories/${id}/products`, 'GET', null).then(
 						res => {
-							dispatch(clickSideBar(res.data,sectionNames.PRODUCTS));
+							dispatch(fetchAllItems(res.data,sectionNames.PRODUCTS))
 						}
 					);
 		        });
@@ -34,7 +34,7 @@ export const actFetchItemsRequest = (sectionName) => {
 	}
 	else {
 		return dispatch =>{
-			dispatch(clickSideBar([],sectionName));
+			dispatch(()=>null);
 		};
 	}
 }

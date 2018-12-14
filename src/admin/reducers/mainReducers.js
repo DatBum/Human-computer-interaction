@@ -1,14 +1,14 @@
 import * as sectionNames from '../constants/SectionNames';
-import * as types from '../constants/SideBarActionTypes';
+import * as types from '../constants/MainActionTypes';
 
 const initialState = {
-    sectionName: sectionNames.KHACHHANG,
-    items: []
+	sectionName: sectionNames.KHACHHANG,
+	items: []
 };
 
-export default function sideBarReducers(state = initialState, action) {
+export default function mainReducer(state = initialState, action) {
     switch (action.type) {
-        case types.CLICK_SIDEBARITEM:
+        case types.FETCH_ITEMS:
         	var newitems = action.items;
         	if(state.sectionName === action.sectionName){
 	            let currentdata = state.items;

@@ -4,11 +4,11 @@ import { bindActionCreators } from 'redux';
 import * as SideBarActions from '../actions/SideBarActions';
 
 class SideBar extends Component {
-
-  handleSideBar = (e) =>{
-  	const sectionTitle = e.target.text;
-  	this.props.actions.clickSideBar(sectionTitle);
-  }
+	
+	handleSideBar = (e) =>{
+		const sectionTitle = e.target.text;
+		this.props.actions.actFetchItemsRequest(sectionTitle);
+	}
 
 	render() {
 		return (
@@ -26,11 +26,6 @@ class SideBar extends Component {
 						    <li className="nav-item">
 						      <a className="nav-link active" onClick={this.handleSideBar} href="#">
 						        Khách Hàng
-						      </a>
-						    </li>
-						    <li className="nav-item">
-						      <a className="nav-link" onClick={this.handleSideBar} href="#">
-						        Nhóm đối tác, nhà cung cấp
 						      </a>
 						    </li>
 						    <li className="nav-item">
@@ -52,10 +47,11 @@ class SideBar extends Component {
 	}
 }
 
-function mapStateToProps(state) {
+
+const mapStateToProps = state => {
     return {
-        sectionName: state.rootAdminReducer.sideBarReducers.sectionName
-    };
+      sectionName: state.rootAdminReducer.sideBarReducers.sectionName,
+    }
 }
 
 function mapDispatchToProps(dispatch) {
@@ -64,4 +60,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SideBar);
+export default connect(null, mapDispatchToProps)(SideBar);

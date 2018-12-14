@@ -1,4 +1,3 @@
-//import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
@@ -7,9 +6,13 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import appReducers from './reducers/index';
 import App from './App';
+import * as sectionNames from './admin/constants/SectionNames';
+
+const initialState = {}
 
 const store = createStore(
 	appReducers,
+	initialState,
 	applyMiddleware(thunk),
 );
 
