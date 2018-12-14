@@ -32,6 +32,13 @@ export const actFetchItemsRequest = (sectionName) => {
 			});
 		};
 	}
+	else if(sectionName === sectionNames.USERS) {
+		return dispatch =>{
+			return callApi(`users`,'GET', null).then(res =>{
+				dispatch(clickSideBar(res.data,sectionNames.USERS))
+			});
+		};
+	}
 	else {
 		return dispatch =>{
 			dispatch(clickSideBar([],sectionName));
