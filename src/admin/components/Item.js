@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import * as SectionNames from '../constants/SectionNames'
 
 class Item extends Component {
 
+  handleDeleteItem = (e) => () =>{
+    this.props.deleteItem(this.props.sectionName,this.props.item);
+  }
+
   render() {
-    const {item,index} = this.props;
+    const {sectionName, item, index} = this.props;
     let contents = {
       ...item
     }
@@ -16,13 +21,14 @@ class Item extends Component {
     const seedItem = datas.map((data,index)=> {
       return(<td key={index}>{data}</td>)
     });
+
     return (
     	<tr>
         <td>{index + 1}</td>
         {seedItem}
         <td>
-          <button type="button" className="btn btn-warning">Edit</button>
-          <button type="button" className="btn btn-danger">Delete</button>
+            <button id={item.id} type="button" className="btn btn-warning">Edit</button>
+            <button onClick={this.handleDeleteItem()} type="button" className="btn btn-danger">Delete</button>
         </td>
       </tr>
     );

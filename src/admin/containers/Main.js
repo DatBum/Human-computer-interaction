@@ -45,7 +45,7 @@ class Main extends Component {
           clearSearch={actions.handleClearSearch}
           sectionName={section.sectionName}
         />
-        <MainContent items={items}/>
+        <MainContent deleteItem={actions.deleteItem} sectionName={section.sectionName} items={items}/>
       </div>
 		);
 	}
