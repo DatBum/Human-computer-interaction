@@ -89,7 +89,6 @@ class CheckoutPage extends Component {
 			                                            className="form-control"
 			                                            id="input-email"
 			                                            placeholder="E-Mail"
-			                                            defaultValue
 			                                            name="email"
 			                                        />
 			                                    </div>
@@ -105,8 +104,6 @@ class CheckoutPage extends Component {
 			                                            className="form-control"
 			                                            id="input-password"
 			                                            placeholder="Password"
-			                                            defaultValue
-			                                            name="password"
 			                                        />
 			                                        <br />
 			                                        <a href="#">Forgot Password</a>
@@ -159,8 +156,6 @@ class CheckoutPage extends Component {
 			                                                    <input
 			                                                        type="radio"
 			                                                        defaultChecked="checked"
-			                                                        defaultValue={1}
-			                                                        name="customer_group_id"
 			                                                    />
 			                                                    Default
 			                                                </label>
@@ -178,7 +173,6 @@ class CheckoutPage extends Component {
 			                                                className="form-control"
 			                                                id="input-payment-firstname"
 			                                                placeholder="First Name"
-			                                                defaultValue
 			                                                name="firstname"
 			                                            />
 			                                        </div>
@@ -194,8 +188,6 @@ class CheckoutPage extends Component {
 			                                                className="form-control"
 			                                                id="input-payment-lastname"
 			                                                placeholder="Last Name"
-			                                                defaultValue
-			                                                name="lastname"
 			                                            />
 			                                        </div>
 			                                        <div className="form-group required">
@@ -210,7 +202,6 @@ class CheckoutPage extends Component {
 			                                                className="form-control"
 			                                                id="input-payment-email"
 			                                                placeholder="E-Mail"
-			                                                defaultValue
 			                                                name="email"
 			                                            />
 			                                        </div>
@@ -226,8 +217,6 @@ class CheckoutPage extends Component {
 			                                                className="form-control"
 			                                                id="input-payment-telephone"
 			                                                placeholder="Telephone"
-			                                                defaultValue
-			                                                name="telephone"
 			                                            />
 			                                        </div>
 			                                        <div className="form-group">
@@ -242,8 +231,6 @@ class CheckoutPage extends Component {
 			                                                className="form-control"
 			                                                id="input-payment-fax"
 			                                                placeholder="Fax"
-			                                                defaultValue
-			                                                name="fax"
 			                                            />
 			                                        </div>
 			                                    </fieldset>
@@ -261,8 +248,6 @@ class CheckoutPage extends Component {
 			                                                className="form-control"
 			                                                id="input-payment-password"
 			                                                placeholder="Password"
-			                                                defaultValue
-			                                                name="password"
 			                                            />
 			                                        </div>
 			                                        <div className="form-group required">
@@ -277,7 +262,6 @@ class CheckoutPage extends Component {
 			                                                className="form-control"
 			                                                id="input-payment-confirm"
 			                                                placeholder="Password Confirm"
-			                                                defaultValue
 			                                                name="confirm"
 			                                            />
 			                                        </div>
@@ -298,7 +282,6 @@ class CheckoutPage extends Component {
 			                                                className="form-control"
 			                                                id="input-payment-company"
 			                                                placeholder="Company"
-			                                                defaultValue
 			                                                name="company"
 			                                            />
 			                                        </div>
@@ -314,8 +297,6 @@ class CheckoutPage extends Component {
 			                                                className="form-control"
 			                                                id="input-payment-address-1"
 			                                                placeholder="Address 1"
-			                                                defaultValue
-			                                                name="address_1"
 			                                            />
 			                                        </div>
 			                                        <div className="form-group">
@@ -330,8 +311,6 @@ class CheckoutPage extends Component {
 			                                                className="form-control"
 			                                                id="input-payment-address-2"
 			                                                placeholder="Address 2"
-			                                                defaultValue
-			                                                name="address_2"
 			                                            />
 			                                        </div>
 			                                        <div className="form-group required">
@@ -346,8 +325,6 @@ class CheckoutPage extends Component {
 			                                                className="form-control"
 			                                                id="input-payment-city"
 			                                                placeholder="City"
-			                                                defaultValue
-			                                                name="city"
 			                                            />
 			                                        </div>
 			                                        <div className="form-group required">
@@ -362,7 +339,6 @@ class CheckoutPage extends Component {
 			                                                className="form-control"
 			                                                id="input-payment-postcode"
 			                                                placeholder="Post Code"
-			                                                defaultValue
 			                                                name="postcode"
 			                                            />
 			                                        </div>
@@ -538,7 +514,6 @@ class CheckoutPage extends Component {
 			                                            className="form-control"
 			                                            id="input-shipping-firstname"
 			                                            placeholder="First Name"
-			                                            defaultValue="mm"
 			                                            name="firstname"
 			                                        />
 			                                    </div>
@@ -556,8 +531,6 @@ class CheckoutPage extends Component {
 			                                            className="form-control"
 			                                            id="input-shipping-lastname"
 			                                            placeholder="Last Name"
-			                                            defaultValue="mm"
-			                                            name="lastname"
 			                                        />
 			                                    </div>
 			                                </div>
@@ -574,7 +547,7 @@ class CheckoutPage extends Component {
 			                                            className="form-control"
 			                                            id="input-shipping-company"
 			                                            placeholder="Company"
-			                                            defaultValue
+			                                            defaultValue="Framgia"
 			                                            name="company"
 			                                        />
 			                                    </div>
@@ -592,7 +565,7 @@ class CheckoutPage extends Component {
 			                                            className="form-control"
 			                                            id="input-shipping-address-1"
 			                                            placeholder="Address 1"
-			                                            defaultValue="aaaa"
+			                                            defaultValue="Da Nang"
 			                                            name="address_1"
 			                                        />
 			                                    </div>
@@ -610,8 +583,8 @@ class CheckoutPage extends Component {
 			                                            className="form-control"
 			                                            id="input-shipping-address-2"
 			                                            placeholder="Address 2"
-			                                            defaultValue
 			                                            name="address_2"
+			                                            defaultValue="Malaysia"
 			                                        />
 			                                    </div>
 			                                </div>
@@ -628,7 +601,7 @@ class CheckoutPage extends Component {
 			                                            className="form-control"
 			                                            id="input-shipping-city"
 			                                            placeholder="City"
-			                                            defaultValue="aaaaa"
+			                                            defaultValue="Da Nang"
 			                                            name="city"
 			                                        />
 			                                    </div>
