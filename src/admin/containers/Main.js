@@ -10,13 +10,11 @@ class Main extends Component {
 
 	render() {
     const {section} = this.props;
-    // console.log("render");
-    console.log(section.sectionName);
 
 		return (
       <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <MainHeader sectionName={section.sectionName}/>
-        <MainContent />
+        <MainContent items={section.items}/>
       </div>
 		);
 	}

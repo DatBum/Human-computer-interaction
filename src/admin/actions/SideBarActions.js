@@ -34,7 +34,7 @@ export const actFetchItemsRequest = (sectionName) => {
 	}
 	else {
 		return dispatch =>{
-			dispatch(clickSideBar(null,sectionName));
+			dispatch(clickSideBar([],sectionName));
 		};
 	}
 }
