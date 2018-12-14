@@ -4,7 +4,8 @@ import * as types from '../constants/MainActionTypes';
 const initialState = {
 	sectionName: sectionNames.USERS,
     searchStr: '',
-    searchOnChange: ''
+    searchOnChange: '',
+    isShowForm  : false
 };
 
 export default function mainReducer(state = initialState, action) {
@@ -24,6 +25,11 @@ export default function mainReducer(state = initialState, action) {
                 ...state,
                 searchStr: '',
                 searchOnChange: ''
+            }
+        case types.TOGGLE_FORM:
+            return{
+                ...state,
+                isShowForm: !state.isShowForm
             }
         default:
             return state;

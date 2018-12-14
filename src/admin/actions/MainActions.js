@@ -21,3 +21,9 @@ export const handleClearSearch = () => {
 		type: types.CLEAR_SEARCH
 	}
 }
+
+export const toggleForm = () => {
+	return{
+		type: types.TOGGLE_FORM
+	}
+}
