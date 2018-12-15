@@ -42,7 +42,7 @@ const RegisterForm = props => {
                           className="form-control"
                           id="input-firstname"
                           placeholder="First Name"
-                          defaultValue
+                          defaultValue=''
                           name="firstname"
                       />
                   </div>
@@ -61,7 +61,7 @@ const RegisterForm = props => {
                           className="form-control"
                           id="input-email"
                           placeholder="E-Mail"
-                          defaultValue
+                          defaultValue=''
                           name="email"
                       />
                   </div>
@@ -78,11 +78,12 @@ const RegisterForm = props => {
                   </label>
                   <div className="col-sm-10">
                       <input
+                          onChange={props.passwordChanged}
                           type="password"
                           className="form-control"
                           id="input-password"
                           placeholder="Password"
-                          defaultValue
+                          defaultValue=''
                           name="password"
                       />
                   </div>
@@ -96,11 +97,12 @@ const RegisterForm = props => {
                   </label>
                   <div className="col-sm-10">
                       <input
+                          onChange={props.passwordConfirmChanged}
                           type="password"
                           className="form-control"
                           id="input-confirm"
                           placeholder="Password Confirm"
-                          defaultValue
+                          defaultValue=''
                           name="confirm"
                       />
                   </div>

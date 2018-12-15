@@ -14,7 +14,8 @@ class LoginFormContainer extends Component {
 
   state = {
     email: "",
-    password: ""
+    password: "",
+    role: "User"
   }
 
 
