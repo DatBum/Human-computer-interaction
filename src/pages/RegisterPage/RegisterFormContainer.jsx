@@ -6,13 +6,26 @@ class RegisterFormContainer extends Component {
   state = {
     name: '',
     username: '',
-    passWord: '',
-    passWordConfirm: ''
+    password: '',
+    passwordConfirm: '',
+    role: 'User'
   }
 
   onChangeName = (event) => {
     this.setState({
       name: event.target.value
+    })
+  }
+
+  onChangePassword = event => {
+    this.setState({
+      passWord: event.target.value
+    })
+  }
+
+  onChangePasswordWordConfirm = event => {
+    this.setState({
+      passWord: event.target.value
     })
   }
 
@@ -23,11 +36,15 @@ class RegisterFormContainer extends Component {
   }
 
   handleSubmit = () => {
-    Axios.post('http://5c0fac75fc4df20013083a91.mockapi.io/users', {
-      name: this.state.name,
-      username: this.state.username,
-    }).then(res => console.log(res))
-    .catch(error => console.log(error));
+    const { name, username, role , password, passwordConfirm } = this.state
+    if(name != '' && username != '' && role != '') {
+      Axios.post('http://5c0fac75fc4df20013083a91.mockapi.io/users', {
+        name: this.state.name,
+        username: this.state.username,
+        role: this.state.role
+      }).then(res => console.log(res))
+      .catch(error => console.log(error));
+    }
   }
 
   render() {
@@ -45,6 +62,8 @@ class RegisterFormContainer extends Component {
         <RegisterForm formSubmit={this.handleSubmit}
           nameChanged={this.onChangeName}
           emailChanged={this.onChangeEmail}
+          passwordChanged={this.onChangePassword}
+          passwordConfirmChanged={this.onChangePasswordWordConfirm}
         />
       </Fragment>
     )
