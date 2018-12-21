@@ -1,11 +1,11 @@
 # HCI-Sem7
 
-Dependency:
-Axios:
+##Dependency:
+###Axios:
 npm install --save axios
-Redux & React-Redux
+###Redux & React-Redux
 npm install --save redux react-redux
-Redux-thunk:
+###Redux-thunk:
 npm install --save redux-thunk
-React-router-dom:
+###React-router-dom:
 npm install --save react-router-dom
