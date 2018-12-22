@@ -71,13 +71,20 @@ class Main extends Component {
     let itemsOrigin = section.items
     let items = [];
     const search = mainProps.searchStr.toLowerCase();
-    // console.log(itemsOrigin)
+    // console.log(itemsOrigin);
 
     // SEARCH
     if(search.length > 0){
       itemsOrigin.forEach((item)=>{
-        if(item.name.toLowerCase().indexOf(search) != -1){
-          items.push(item);
+        if (section.sectionName === 'Xuất nhập kho'){
+          if(item.personCreated.toLowerCase().indexOf(search) != -1){
+            items.push(item);
+          }
+        }
+        else {
+          if(item.name.toLowerCase().indexOf(search) != -1){
+            items.push(item);
+          }
         }
       });
     }
