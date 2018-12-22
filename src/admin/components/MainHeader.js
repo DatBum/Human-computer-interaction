@@ -13,7 +13,11 @@ export default class MainHeader extends Component {
     let elemForm = null;
     if(this.props.isShowForm){
       elemButton = <button type="button" onClick={this.handleAdd} className="btn btn-danger">Close Form</button>
-      elemForm = <Form />
+      elemForm = <Form formSubmit={this.props.formSubmit}
+          nameChanged={this.props.nameChanged}
+          emailChanged={this.props.emailChanged}
+          passwordChanged={this.props.passwordChanged}
+          passwordConfirmChanged={this.props.passwordConfirmChanged}/>
     }
     return (
       <div className="row" style={{marginBottom: '30px'}}>

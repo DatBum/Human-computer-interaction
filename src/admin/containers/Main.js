@@ -8,6 +8,57 @@ import { bindActionCreators } from 'redux';
 
 class Main extends Component {
 
+  state = {
+    name: '',
+    username: '',
+    password: '',
+    passwordConfirm: '',
+    role: 'User'
+  }
+
+
+  onChangeName = (event) => {
+    console.log("name")
+    this.setState({
+      name: event.target.value
+    })
+  }
+
+  onChangePassword = event => {
+    console.log("pass")
+    this.setState({
+      password: event.target.value
+    })
+  }
+
+  onChangePasswordWordConfirm = event => {
+    console.log("confirm")
+    this.setState({
+      passwordConfirm: event.target.value
+    })
+  }
+
+  onChangeEmail = (event) => {
+    console.log("email")
+    this.setState({
+      username: event.target.value
+    })
+  }
+
+  handleSubmit = () => {
+    console.log("test")
+    const { name, username, role , password, passwordConfirm } = this.state
+    if(name !== '' && username !== '' && role !== '' && password === passwordConfirm) {
+      const item = {
+        name: name,
+        username: username,
+        role: role
+      }
+      this.props.actions.addItem(this.props.section.sectionName,item);
+    }
+    else alert("Something wrong");
+  }
+
   componentWillMount(){
     this.props.actions.actFetchItemsRequest(this.props.section.sectionName);
   }
@@ -46,6 +97,11 @@ class Main extends Component {
           sectionName={section.sectionName}
           toggleForm={actions.toggleForm}
           isShowForm={mainProps.isShowForm}
+          formSubmit={this.handleSubmit}
+          nameChanged={this.onChangeName}
+          emailChanged={this.onChangeEmail}
+          passwordChanged={this.onChangePassword}
+          passwordConfirmChanged={this.onChangePasswordWordConfirm}
         />
         <MainContent 
           toggleForm={actions.toggleForm} 
