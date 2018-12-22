@@ -19,13 +19,13 @@ class RegisterFormContainer extends Component {
 
   onChangePassword = event => {
     this.setState({
-      passWord: event.target.value
+      password: event.target.value
     })
   }
 
   onChangePasswordWordConfirm = event => {
     this.setState({
-      passWord: event.target.value
+      passwordConfirm: event.target.value
     })
   }
 
@@ -37,7 +37,7 @@ class RegisterFormContainer extends Component {
 
   handleSubmit = () => {
     const { name, username, role , password, passwordConfirm } = this.state
-    if(name != '' && username != '' && role != '') {
+    if(name !== '' && username !== '' && role !== '' && password === passwordConfirm) {
       Axios.post('http://5c0fac75fc4df20013083a91.mockapi.io/users', {
         name: this.state.name,
         username: this.state.username,
@@ -45,6 +45,7 @@ class RegisterFormContainer extends Component {
       }).then(res => console.log(res))
       .catch(error => console.log(error));
     }
+    else alert("Something wrong");
   }
 
   render() {

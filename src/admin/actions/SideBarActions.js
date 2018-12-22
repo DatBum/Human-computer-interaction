@@ -18,6 +18,12 @@ const deleteItemAction = (id) =>{
 	}
 }
 
+const addItemAction = (item) =>{
+	return{
+		type: types.ADD_ITEM,
+        item
+	}
+}
 
 export const deleteItem = (sectionName,item) => {
 	const id = item.id;
@@ -33,9 +39,19 @@ export const deleteItem = (sectionName,item) => {
 	else if(sectionName === sectionNames.PRODUCTS){
 		return dispatch => {
 			return callApi(`/categories/${catid}/products/${id}`, 'DELETE', null).then(res => {
-				dispatch(deleteItemAction(res.data.id));
+				dispatch(deleteItemAction(res.data));
 			});
 		};	
+	}
+}
+
+export const addItem = (sectionName,item) => {
+	if(sectionName === sectionNames.USERS){
+		return dispatch => {
+			return callApi(`users/`, 'POST', item).then(res => {
+				dispatch(addItemAction(res.data.id));
+			});
+		};
 	}
 }
 

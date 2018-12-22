@@ -23,12 +23,17 @@ export default function sideBarReducers(state = initialState, action) {
         			items: newitems
         		}
         	}
+        case types.ADD_ITEM:
+            let addeditems = [...state.items,action.item]
+            return{
+                ...state,
+                items: addeditems
+            }
         case types.DELETE_ITEM:
-            console.log("test");
-            const items = state.items.filter((todo) => todo.id !== action.id);
+            let deleteditems = state.items.filter((todo) => todo.id !== action.id);
             return {
                 ...state,
-                items: items
+                items: deleteditems
             }
         default:
             return state;
