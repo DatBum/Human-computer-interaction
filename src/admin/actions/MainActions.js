@@ -1,6 +1,6 @@
 import * as types from '../constants/MainActionTypes';
 import callApi from '../../utils/apiCaller';
-import * as sectionNames from '../constants/SectionNames';
+
 
 export const handleSearch = (searchStr) => {
 	return {
