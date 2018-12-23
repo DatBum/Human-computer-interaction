@@ -49,6 +49,11 @@ class SideBar extends Component {
 						        Xuất nhập kho
 						      </a>
 						    </li>
+						    <li className="nav-item">
+						      <a className="nav-link" onClick={this.handleSideBar} href="#">
+						        Điều chuyển hàng hóa
+						      </a>
+						    </li>
 						</ul>
 					</div>
 				</nav>

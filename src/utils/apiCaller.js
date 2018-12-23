@@ -21,3 +21,13 @@ export function callApi2(endpoint, method = 'GET', body){
     });
 }
 
+export function callApi3(endpoint, method = 'GET', body){
+    return axios({
+        method: method,
+        url: `${Config.API_URL3}/${endpoint}`,
+        data: body
+    }).catch(err => {
+        console.log(err);
+    });
+}
+
