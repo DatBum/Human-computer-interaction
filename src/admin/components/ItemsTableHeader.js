@@ -23,7 +23,12 @@ class ItemsTableHeader extends Component {
       if (header === 'price') header = 'Giá';
       if (header === 'categoryId') header = 'Loại Sản Phẩm';
       if (header === 'role') header = 'Chức Vụ';
-      if (header === 'username') header = 'Tên Đăng Nhập';
+      if (header === 'warehouseOut') header = 'Kho Xuất';
+      if (header === 'typeOut') header = 'TT Xuất';
+      if (header === 'typeIn') header = 'TT Nhập';
+      if (header === 'warehouseIn') header = 'Kho Nhập';
+      if (header === 'isBalance') header = 'Chênh';
+      if (header === 'staffName') header = 'Nhân viên';
       return (<th key={header} className="text-center">{header}</th>);
     });
     return (

@@ -23,7 +23,13 @@ class Item extends Component {
       }
     })
     const seedItem = datas.map((data,index)=> {
-      return(<td key={index}>{data}</td>)
+      if (data === true) {
+        return(<td key={index}>Có</td>)
+      }
+      else if (data === false) {
+        return(<td key={index}>...</td>)
+      }
+      else return(<td key={index}>{data}</td>)
     });
 
     return (

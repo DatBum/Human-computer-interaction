@@ -81,6 +81,11 @@ class Main extends Component {
             items.push(item);
           }
         }
+        else if (section.sectionName === 'Điều chuyển hàng hóa'){
+          if (item.warehouseOut.toLowerCase().indexOf(search) != -1 || item.warehouseIn.toLowerCase().indexOf(search) != -1){
+            items.push(item);
+          }
+        }
         else {
           if(item.name.toLowerCase().indexOf(search) != -1){
             items.push(item);

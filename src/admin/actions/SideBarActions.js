@@ -1,5 +1,5 @@
 import * as types from '../constants/SideBarActionTypes';
-import callApi, { callApi2 } from '../../utils/apiCaller';
+import callApi, { callApi2, callApi3 } from '../../utils/apiCaller';
 import * as sectionNames from '../constants/SectionNames';
 
 export const clickSideBar = (items,sectionName) => {
@@ -50,6 +50,13 @@ export const deleteItem = (sectionName,item) => {
 			});
 		};	
 	}
+	else if(sectionName === sectionNames.TRANSPORT){
+		return dispatch => {
+			return callApi3(`/Transport/${id}`, 'DELETE', null).then(res => {
+				dispatch(deleteItemAction(res.data));
+			});
+		};	
+	}
 }
 
 export const addItem = (sectionName,item) => {
@@ -95,6 +102,13 @@ export const actFetchItemsRequest = (sectionName) => {
 		return dispatch =>{
 			return callApi2('InOutInfo','GET', null).then(res =>{
 				dispatch(clickSideBar(res.data,sectionNames.INOUT));
+			});
+		};
+	}
+	else if(sectionName === sectionNames.TRANSPORT) {
+		return dispatch =>{
+			return callApi3('Transport','GET', null).then(res =>{
+				dispatch(clickSideBar(res.data,sectionNames.TRANSPORT));
 			});
 		};
 	}
