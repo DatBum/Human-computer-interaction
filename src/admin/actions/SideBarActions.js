@@ -38,8 +38,8 @@ export const deleteItem = (sectionName,item) => {
 	}
 	else if(sectionName === sectionNames.PRODUCTS){
 		return dispatch => {
-			return callApi(`/categories/${catid}/products/${id}`, 'DELETE', null).then(res => {
-				dispatch(deleteItemAction(res.data));
+			return callApi(`categories/${catid}/products/${id}`, 'DELETE', null).then(res => {
+				dispatch(deleteItemAction(res.data.id));
 			});
 		};	
 	}
@@ -60,12 +60,21 @@ export const deleteItem = (sectionName,item) => {
 }
 
 export const addItem = (sectionName,item) => {
+	const catid = item.categoryId;
 	if(sectionName === sectionNames.USERS){
 		return dispatch => {
 			return callApi(`users/`, 'POST', item).then(res => {
-				dispatch(addItemAction(res.data.id));
+				dispatch(addItemAction(res.data));
 			});
 		};
+	}
+	else if(sectionName === sectionNames.PRODUCTS){
+		return dispatch => {
+			return callApi(`categories/${catid}/products`, 'POST', item).then(res => {
+				console.log(res);
+				dispatch(addItemAction(res.data));
+			});
+		}
 	}
 }
 

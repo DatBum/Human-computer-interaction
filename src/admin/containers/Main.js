@@ -111,6 +111,7 @@ class Main extends Component {
           passwordChanged={this.onChangePassword}
           passwordConfirmChanged={this.onChangePasswordWordConfirm}
           categories={categories}
+          addItem={actions.addItem}
         />
         <MainContent 
           toggleForm={actions.toggleForm} 

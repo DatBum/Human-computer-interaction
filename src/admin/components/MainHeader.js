@@ -12,10 +12,10 @@ export default class MainHeader extends Component {
   }
 
   render() {
-    let elemButton = <button type="button" onClick={this.handleAdd} className="btn btn-info">Add Item</button>
+    let elemButton = <button type="button" onClick={this.handleAdd} className="btn btn-info">ADD ITEM</button>
     let elemForm = null;
     if(this.props.isShowForm){
-      elemButton = <button type="button" onClick={this.handleAdd} className="btn btn-danger">Close FormUser</button>
+      elemButton = <button type="button" onClick={this.handleAdd} className="btn btn-danger">CLOSE</button>
       if(this.props.sectionName === sectionNames.USERS){
         elemForm = <FormUser formSubmit={this.props.formSubmit}
           nameChanged={this.props.nameChanged}
@@ -26,11 +26,9 @@ export default class MainHeader extends Component {
       if(this.props.sectionName === sectionNames.PRODUCTS){
         elemForm = <FormProduct formSubmit={this.props.formSubmit}
           actFetchCategoriesRequest={this.props.actFetchCategoriesRequest}
-          nameChanged={this.props.nameChanged}
-          emailChanged={this.props.emailChanged}
-          passwordChanged={this.props.passwordChanged}
-          passwordConfirmChanged={this.props.passwordConfirmChanged}
           categories={this.props.categories}
+          addItem={this.props.addItem}
+          sectionName={this.props.sectionName}
           />
       }
     }
