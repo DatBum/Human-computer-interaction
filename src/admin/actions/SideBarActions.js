@@ -71,9 +71,16 @@ export const addItem = (sectionName,item) => {
 	else if(sectionName === sectionNames.PRODUCTS){
 		return dispatch => {
 			return callApi(`categories/${catid}/products`, 'POST', item).then(res => {
-				console.log(res);
 				dispatch(addItemAction(res.data));
 			});
+		}
+	}
+	else if(sectionName === sectionNames.TRANSPORT){
+		return dispatch => {
+			// return callApi3(,item).then(res => {
+			// 	console.log(res);
+			// 	dispatch(addItemAction(res.data));
+			// });
 		}
 	}
 }

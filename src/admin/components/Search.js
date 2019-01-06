@@ -15,7 +15,6 @@ export default class MainHeader extends Component {
 
   render() {
     return (
-      
         <div className="input-group">
           <input value={this.props.onchangeSearchStr} onChange={this.handleChange} type="text" className="form-control" placeholder="Search for..." />
           <span className="input-group-btn">
