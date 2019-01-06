@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-export default class MainHeader extends Component {
+export default class Search extends Component {
 
   handleSearch = () =>{
     this.props.onClickSearchGo(this.props.onchangeSearchStr);
@@ -15,14 +15,16 @@ export default class MainHeader extends Component {
 
   render() {
     return (
-        <div className="input-group">
+      <Fragment>
+        <div className="">
           <input value={this.props.onchangeSearchStr} onChange={this.handleChange} type="text" className="form-control" placeholder="Search for..." />
-          <span className="input-group-btn">
-              <button onClick={this.handleSearch} className="btn btn-info" type="button">Find</button>
-              <button onClick={this.handleClear} className="btn btn-warning" type="button">Clear</button>
+          <p></p>
+          <span className="">
+              <button onClick={this.handleSearch} className="btn btn-info" type="button"><b>FIND</b></button>
+              <button onClick={this.handleClear} className="btn btn-warning" type="button"><b>CLEAR</b></button>
           </span>
         </div>
-      
+      </Fragment>
     );
   }
 }

@@ -103,7 +103,7 @@ export default class FormProduct extends Component {
       return <ProductCategoryItem onClickCategory={this.onClickCategory} categoryId={category.id} categoryName={category.name} key={index} />
     })
     return (
-      <div className="btn-toolbar col-xs-8 col-sm-8 col-md-8 col-lg-8 mb-8 mb-md-8">
+      <div className="btn-toolbar">
           <div className="Form row mb-7">
             <form>
                 <div className="form-group col">
@@ -139,8 +139,8 @@ export default class FormProduct extends Component {
                   </div>
                 </div>
                 <div className="col-lg-4 form-group">
-                  <button onClick={this.formSubmit} type="button" className="btn btn-default">Submit</button>
-                  <button type="button" className="btn btn-default">Cancel</button>
+                  <button onClick={this.formSubmit} type="button" className="btn btn-success"><b>SUBMIT</b></button>
+                  <button type="button" onClick={this.props.closeModal} className="btn btn-warning"><b>CANCLE</b></button>
                 </div>
             </form>
           </div>
