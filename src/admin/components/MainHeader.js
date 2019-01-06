@@ -4,6 +4,7 @@ import FormUser from './FormUser';
 import FormProduct from './FormProduct';
 import FormTransport from './FormTransport';
 import FilterUser from './FilterUser';
+import FormInOut from './FormInOut';
 import * as sectionNames from '../constants/SectionNames';
 import Modal from 'react-modal';
 Modal.setAppElement('#root');
@@ -73,6 +74,17 @@ export default class MainHeader extends Component {
     else if(this.props.sectionName === sectionNames.TRANSPORT){
       return <FormTransport 
         addItem={this.props.addItem}
+        closeModal={this.closeModal}
+      />
+    }
+    else if(this.props.sectionName === sectionNames.INOUT){
+      return <FormInOut 
+        actFetchInOutActionRequest={this.props.actFetchInOutActionRequest}
+        inout={this.props.inout}
+        addInOut={this.props.addInOut}
+        addItem={this.props.addItem}
+        updateInOut={this.props.updateInOut}
+        sectionName={this.props.sectionName}
         closeModal={this.closeModal}
       />
     }
