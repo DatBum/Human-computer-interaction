@@ -17,7 +17,6 @@ class Main extends Component {
     role: 'User'
   }
 
-
   onChangeName = (event) => {
     this.setState({
       name: event.target.value
@@ -51,6 +50,14 @@ class Main extends Component {
         role: role
       }
       this.props.actions.addItem(this.props.section.sectionName,item);
+      alert("Adding user has been successed !")
+      this.setState({
+        name: '',
+        username: '',
+        password: '',
+        passwordConfirm: '',
+        role: 'User'
+      });
     }
     else alert("Something wrong");
   }
@@ -67,6 +74,15 @@ class Main extends Component {
     let itemsOrigin = section.items
     let items = [];
     const search = mainProps.searchStr.toLowerCase();
+
+    const { name, username, role , password, passwordConfirm } = this.state
+    const itemUser = {
+        name: name,
+        username: username,
+        role: role,
+        password: password,
+        passwordConfirm: passwordConfirm
+      }
 
     // SEARCH
     if(search.length > 0){
@@ -112,6 +128,8 @@ class Main extends Component {
           passwordConfirmChanged={this.onChangePasswordWordConfirm}
           categories={categories}
           addItem={actions.addItem}
+          itemUser={itemUser}
+          // warehouses={warehouses}
         />
         <MainContent 
           toggleForm={actions.toggleForm} 

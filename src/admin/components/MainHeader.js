@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Search from './Search';
 import FormUser from './FormUser';
 import FormProduct from './FormProduct';
+import FormTransport from './FormTransport';
 import * as sectionNames from '../constants/SectionNames';
 
 
@@ -11,26 +12,37 @@ export default class MainHeader extends Component {
     this.props.toggleForm();
   }
 
+  addItemForm = () =>{
+    if(this.props.sectionName === sectionNames.USERS){
+      return <FormUser formSubmit={this.props.formSubmit}
+        nameChanged={this.props.nameChanged}
+        emailChanged={this.props.emailChanged}
+        passwordChanged={this.props.passwordChanged}
+        passwordConfirmChanged={this.props.passwordConfirmChanged}
+        itemUser={this.props.itemUser}
+        />
+    }
+    else if(this.props.sectionName === sectionNames.PRODUCTS){
+      return <FormProduct 
+        actFetchCategoriesRequest={this.props.actFetchCategoriesRequest}
+        categories={this.props.categories}
+        addItem={this.props.addItem}
+        sectionName={this.props.sectionName}
+      />
+    }
+    else if(this.props.sectionName === sectionNames.TRANSPORT){
+      return <FormTransport 
+        addItem={this.props.addItem}
+      />
+    }
+  }
+
   render() {
     let elemButton = <button type="button" onClick={this.handleAdd} className="btn btn-info">ADD ITEM</button>
     let elemForm = null;
     if(this.props.isShowForm){
       elemButton = <button type="button" onClick={this.handleAdd} className="btn btn-danger">CLOSE</button>
-      if(this.props.sectionName === sectionNames.USERS){
-        elemForm = <FormUser formSubmit={this.props.formSubmit}
-          nameChanged={this.props.nameChanged}
-          emailChanged={this.props.emailChanged}
-          passwordChanged={this.props.passwordChanged}
-          passwordConfirmChanged={this.props.passwordConfirmChanged}/>
-      }
-      if(this.props.sectionName === sectionNames.PRODUCTS){
-        elemForm = <FormProduct formSubmit={this.props.formSubmit}
-          actFetchCategoriesRequest={this.props.actFetchCategoriesRequest}
-          categories={this.props.categories}
-          addItem={this.props.addItem}
-          sectionName={this.props.sectionName}
-          />
-      }
+      elemForm = this.addItemForm();
     }
     return (
       <div className="row" style={{marginBottom: '30px'}}>
