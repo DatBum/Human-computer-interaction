@@ -11,7 +11,7 @@ export default class FormUser extends Component {
 
   render() {
     return (
-      <div className="btn-toolbar col-xs-8 col-sm-8 col-md-8 col-lg-8 mb-8 mb-md-8">
+      <div>
         <div className="Form row mb-7">
           <form >
               <div className="form-group col">
@@ -34,10 +34,11 @@ export default class FormUser extends Component {
                   <input name="task_name" value={this.props.itemUser.passwordConfirm} onChange={this.props.passwordConfirmChanged} type="password" className="form-control" />
                 </div>
               </div>
-
-                <div className="col-lg-4 form-group">
-                  <button onClick={this.props.formSubmit} type="button" className="btn btn-default">Submit</button>
-                  <button type="button" className="btn btn-default">Cancel</button>
+                <div className="col-lg-6 form-group">
+                  <span>
+                  <button onClick={this.props.formSubmit} type="button" className="btn btn-success"><b>SUBMIT</b></button>
+                  <button type="button" onClick={this.props.closeModal} className="btn btn-warning"><b>CANCLE</b></button>
+                  </span>
                 </div>
           </form>
         </div>

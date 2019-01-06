@@ -115,42 +115,59 @@ export default class FormProduct extends Component {
 
     return (
       
-      <div className="btn-toolbar col-xs-8 col-sm-8 col-md-8 col-lg-8 mb-8 mb-md-8">
-          <div className="Form row mb-7">
-            <form>
+      <div className="btn-toolbar">
+          <div className="Form row col">
+            <div className="col-xs-7">
+              <h2 className="text-center">Schedule</h2>
               <DateRangePicker
-                ranges={[selectionRange]}
-                onChange={this.handleSelectRange}
-              />
-              <div className="form-group col">
+                  ranges={[selectionRange]}
+                  onChange={this.handleSelectRange}
+                />
+            </div>
+            <form className="col-xs-5">
+              <h2 className="text-center">Information</h2>
+              <div className="form-group ">
                 <div className="col-xs-6 form-group">
-                  <label >Product Name :</label>
-                  <input name="task_name" value={name} onChange={this.handleNameChanged} type="text" className="form-control"/>
+                  <label >From Warehouse :</label>
+                  <select class="form-control">
+                  <option>Warehouse 1</option>
+                  <option>Warehouse 2</option>
+                  <option>Warehouse 3</option>
+                  <option>Warehouse 4</option>
+                  <option>Warehouse 5</option>
+                  </select>
                 </div>
                 <div className="col-xs-6 form-group">
-                  <label >Price :</label>
-                  <input name="task_name" value={price} onChange={this.handlePriceChanged} type="number" className="form-control" />
+                  <label >To Warehouse :</label>
+                  <select class="form-control">
+                  <option>Warehouse 2</option>
+                  <option>Warehouse 3</option>
+                  <option>Warehouse 4</option>
+                  <option>Warehouse 5</option>
+                  </select>
                 </div>
               </div>
               <div className="form-group col">
                 <div className="col-xs-6 form-group">
-                  <label >Quantity :</label>
-                  <input type="number" name="task_name" value={quantity} onChange={this.handleQuantityChanged} className="form-control" />
+                  <label >Odds Ratio({"<"}5%) :</label>
+                  <input type="number" max="5" min="0" 
+                  name="task_name" value='0' onChange={this.handleQuantityChanged} className="form-control" />
                 </div>
-                <div className="col-xs-4 form-group">
-                  <label >Picture Upload :</label>
-                  <input className="btn btn-default" name="task_name" onChange={this.fileSelectedHandle} type="file" className="form-control" />
+                <div className="col-xs-6 form-group">
+                  <label >Staff :</label>
+                  <select class="form-control">
+                  <option>Staff 1</option>
+                  <option>Staff 2</option>
+                  <option>Staff 3</option>
+                  <option>Staff 4</option>
+                  </select>
                 </div>
               </div>
-              <div className="form-group col">
-                <div className="col-xs-12 form-group">
-                  <label >Description :</label>
-                  <textarea name="task_name" value={description} onChange={this.handleDescChanged} type="password" className="form-control" />
-                </div>
-              </div>
-              <div className="col-lg-4 form-group">
-                <button onClick={this.formSubmit} type="button" className="btn btn-default">Submit</button>
-                <button type="button" className="btn btn-default">Cancel</button>
+              <div className="col-xs-7 form-group">
+                <span>
+                  <button onClick={this.props.formSubmit} type="button" className="btn btn-success"><b>SUBMIT</b></button>
+                  <button type="button" onClick={this.props.closeModal} className="btn btn-warning"><b>CANCLE</b></button>
+                  </span>
               </div>
             </form>
           </div>
