@@ -1,6 +1,9 @@
-import React, { Component, Fragment } from 'react';
-import Search from './Search'
-import Form from './Form'
+import React, { Component } from 'react';
+import Search from './Search';
+import FormUser from './FormUser';
+import FormProduct from './FormProduct';
+import * as sectionNames from '../constants/SectionNames';
+
 
 export default class MainHeader extends Component {
 
@@ -9,15 +12,25 @@ export default class MainHeader extends Component {
   }
 
   render() {
-    let elemButton = <button type="button" onClick={this.handleAdd} className="btn btn-info">Add Item</button>
+    let elemButton = <button type="button" onClick={this.handleAdd} className="btn btn-info">ADD ITEM</button>
     let elemForm = null;
     if(this.props.isShowForm){
-      elemButton = <button type="button" onClick={this.handleAdd} className="btn btn-danger">Close Form</button>
-      elemForm = <Form formSubmit={this.props.formSubmit}
+      elemButton = <button type="button" onClick={this.handleAdd} className="btn btn-danger">CLOSE</button>
+      if(this.props.sectionName === sectionNames.USERS){
+        elemForm = <FormUser formSubmit={this.props.formSubmit}
           nameChanged={this.props.nameChanged}
           emailChanged={this.props.emailChanged}
           passwordChanged={this.props.passwordChanged}
           passwordConfirmChanged={this.props.passwordConfirmChanged}/>
+      }
+      if(this.props.sectionName === sectionNames.PRODUCTS){
+        elemForm = <FormProduct formSubmit={this.props.formSubmit}
+          actFetchCategoriesRequest={this.props.actFetchCategoriesRequest}
+          categories={this.props.categories}
+          addItem={this.props.addItem}
+          sectionName={this.props.sectionName}
+          />
+      }
     }
     return (
       <div className="row" style={{marginBottom: '30px'}}>

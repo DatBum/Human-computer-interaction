@@ -5,7 +5,7 @@ const initialState = {
 	sectionName: sectionNames.USERS,
     searchStr: '',
     searchOnChange: '',
-    isShowForm  : false
+    isShowForm  : true
 };
 
 export default function mainReducer(state = initialState, action) {
