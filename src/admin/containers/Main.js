@@ -3,6 +3,7 @@ import MainHeader from '../components/MainHeader';
 import MainContent from '../components/MainContent';
 import * as SideBarActions from '../actions/SideBarActions';
 import * as MainActions from '../actions/MainActions';
+import * as InOutActions from '../actions/InOutActions';
 import {actFetchCategoriesRequest} from './../../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -69,7 +70,7 @@ class Main extends Component {
 
 
 	render() {
-    let {section, actions, mainProps, categories} = this.props
+    let {section, actions, mainProps, categories, inout} = this.props
     
     let itemsOrigin = section.items
     let items = [];
@@ -129,7 +130,10 @@ class Main extends Component {
           categories={categories}
           addItem={actions.addItem}
           itemUser={itemUser}
-          // warehouses={warehouses}
+          addInOut={actions.addInOut}
+          updateInOut={actions.updateInOut}
+          actFetchInOutActionRequest={actions.actFetchInOutActionRequest}
+          inout={inout}
         />
         <MainContent 
           toggleForm={actions.toggleForm} 
@@ -146,13 +150,14 @@ const mapStateToProps = state => {
     return {
       section: state.rootAdminReducer.sideBarReducers,
       categories: state.categories,
-      mainProps: state.rootAdminReducer.mainReducers
+      mainProps: state.rootAdminReducer.mainReducers,
+      inout: state.rootAdminReducer.InOutReducers
     }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    actions: bindActionCreators({actFetchCategoriesRequest,...SideBarActions,...MainActions}, dispatch)
+    actions: bindActionCreators({actFetchCategoriesRequest,...SideBarActions,...MainActions,...InOutActions}, dispatch)
   };
 }
 

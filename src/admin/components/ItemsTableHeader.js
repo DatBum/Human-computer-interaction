@@ -19,16 +19,28 @@ class ItemsTableHeader extends Component {
       if (header === 'typeBuy') header = 'Loại';
       if (header === 'productId') header = 'Mã SP';
       if (header === 'personCreated') header = 'Người Tạo';
-      if (header === 'description') header = 'Ghi chú';
       if (header === 'price') header = 'Giá';
       if (header === 'categoryId') header = 'Loại Sản Phẩm';
       if (header === 'role') header = 'Chức Vụ';
       if (header === 'warehouseOut') header = 'Kho Xuất';
-      if (header === 'typeOut') header = 'TT Xuất';
-      if (header === 'typeIn') header = 'TT Nhập';
+      if (header === 'typeOut') {
+        header = 'TT Xuất';
+        return (<th key={header} style={{width: '5%'}} className="text-center">{header}</th>);
+      }
+      if (header === 'typeIn') {
+        header = 'TT Nhập';
+        return (<th key={header} style={{width: '5%'}} className="text-center">{header}</th>);
+      }
       if (header === 'warehouseIn') header = 'Kho Nhập';
-      if (header === 'isBalance') header = 'Chênh';
+      if (header === 'isBalance') {
+        header = 'Chênh';
+        return (<th key={header} style={{width: '5%'}} className="text-center">{header}</th>);
+      }
       if (header === 'staffName') header = 'Nhân viên';
+      if (header === 'description') {
+        header = 'Ghi chú';
+        return (<th key={header} style={{width: '25%'}} className="text-center">{header}</th>);
+      }
       return (<th key={header} className="text-center">{header}</th>);
     });
     return (

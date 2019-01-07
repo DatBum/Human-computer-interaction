@@ -123,7 +123,7 @@ export default class FormProduct extends Component {
                   </div>
                   <div className="col-xs-2 form-group">
                     <label >Category :</label>
-                    <select class="form-control" id="sel1">
+                    <select className="form-control" id="sel1">
                       {categoriesElems}
                     </select>
                   </div>

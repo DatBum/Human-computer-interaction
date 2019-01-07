@@ -10,7 +10,6 @@ export const clickSideBar = (items,sectionName) => {
     };
 }
 
-
 const deleteItemAction = (id) =>{
 	return{
 		type: types.DELETE_ITEM,
@@ -45,14 +44,14 @@ export const deleteItem = (sectionName,item) => {
 	}
 	else if(sectionName === sectionNames.INOUT){
 		return dispatch => {
-			return callApi2(`/InOutInfo/${id}`, 'DELETE', null).then(res => {
+			return callApi2(`InOutInfo/${id}`, 'DELETE', null).then(res => {
 				dispatch(deleteItemAction(res.data));
 			});
 		};	
 	}
 	else if(sectionName === sectionNames.TRANSPORT){
 		return dispatch => {
-			return callApi3(`/Transport/${id}`, 'DELETE', null).then(res => {
+			return callApi3(`Transport/${id}`, 'DELETE', null).then(res => {
 				dispatch(deleteItemAction(res.data));
 			});
 		};	
@@ -71,6 +70,14 @@ export const addItem = (sectionName,item) => {
 	else if(sectionName === sectionNames.PRODUCTS){
 		return dispatch => {
 			return callApi(`categories/${catid}/products`, 'POST', item).then(res => {
+				dispatch(addItemAction(res.data));
+			});
+		}
+	}
+	else if(sectionName === sectionNames.INOUT){
+		return dispatch => {
+			return callApi2(`InOutInfo`, 'POST', item).then(res => {
+				console.log(res);
 				dispatch(addItemAction(res.data));
 			});
 		}
